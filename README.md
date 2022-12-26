@@ -1,0 +1,1 @@
+# DCExt-2022.2_ProjetoJusta
