@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 
 import MyRoute from './MyRoute';
 
@@ -10,9 +10,9 @@ import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 
-export default function Routes() {
+export default function Route() {
   return (
-    <Switch>
+    <Routes>
       <MyRoute exact path="/" component={Alunos} isClosed={false} />
       <MyRoute exact path="/aluno/:id/edit" component={Aluno} isClosed />
       <MyRoute exact path="/aluno/" component={Aluno} isClosed />
@@ -20,6 +20,6 @@ export default function Routes() {
       <MyRoute exact path="/login/" component={Login} isClosed={false} />
       <MyRoute exact path="/register/" component={Register} isClosed={false} />
       <MyRoute path="*" component={Page404} />
-    </Switch>
+    </Routes>
   );
 }
