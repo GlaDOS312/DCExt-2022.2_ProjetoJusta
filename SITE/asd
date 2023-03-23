@@ -1,0 +1,73 @@
+
+let btn = document.querySelector('.fa-eye')
+
+btn.addEventListener('click', ()=>{
+  let inputSenha = document.querySelector('#senha')
+  
+  if(inputSenha.getAttribute('type') == 'password'){
+    inputSenha.setAttribute('type', 'text')
+  } else {
+    inputSenha.setAttribute('type', 'password')
+  }
+})
+
+function entrar(){
+  let user = document.querySelector('#email')
+  let userLabel = document.querySelector('#emailLabel')
+  
+  let senha = document.querySelector('#senha')
+  let senhaLabel = document.querySelector('#senhaLabel')
+  
+  let msgError = document.querySelector('#msgError')
+  let listaUsers = []
+  
+  let userValid = {
+    nome: '',
+    sobrenome: '',
+    email: '',
+    senha: ''
+  }
+  
+  //listaUsers = JSON.parse(localStorage.getItem('listaUsers'))
+  
+ 
+   
+  function getUser(){
+    axios.get(url)
+    .then(response => {
+        listaUsers = response.data.users
+        listaUsers.forEach((item) => {
+            if(user.value == item.email && senha.value == item.senha){
+                userValid = {
+                    nome: item.nome,
+                    sobrenome: item.sobrenome,
+                    email: item.email,
+                    senha: item.senha
+                }
+            }
+        })
+        console.log(userValid)
+  if(email.value == userValid.email && senha.value == userValid.senha){
+    window.location.href = 'logado.html'
+    
+    let mathRandom = Math.random().toString(16).substr(2)
+    let token = mathRandom + mathRandom
+    
+    localStorage.setItem('token', token)
+    localStorage.setItem('userLogado', JSON.stringify(userValid))
+  } else {
+    userLabel.setAttribute('style', 'color: red')
+    user.setAttribute('style', 'border-color: red')
+    senhaLabel.setAttribute('style', 'color: red')
+    senha.setAttribute('style', 'border-color: red')
+    msgError.setAttribute('style', 'display: block')
+    msgError.innerHTML = 'Email ou senha incorretos'
+    email.focus()
+  }
+
+  function sair(){
+    localStorage.removeItem('token')
+    window.location.href = 'login.html'
+  }
+  getUser()
+}

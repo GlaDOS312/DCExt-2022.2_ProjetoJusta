@@ -1,0 +1,41 @@
+<head>
+    <link rel="stylesheet" href="css/login.css">  
+    </head>
+    
+    <body>
+      <script src ="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
+    <div class='container'>
+      <div class='card'>
+        <h1> Login Justa </h1>
+        
+        <div id='msgError'></div>
+        
+        <div class='label-float'>
+          <input type='text' id='cnpj' paceholder='' required>
+          <label id='CNPJLabel' for='cnpj'>CNPJ</label>
+        </div>
+        
+        <div class='label-float'>
+          <input type='senha' id='senha' paceholder='' required>
+          <label id='senhaLabel' for='senha'>Senha</label>
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </div>
+        
+        <div class='justify-center'>
+          <button onclick='entrar()'>Entrar</button>
+        </div>
+
+        <script src="js/login.js"></script>
+        
+        <div class='justify-center'>
+          <hr>
+        </div>
+        
+        <p> Ainda não se cadastrou?
+          <a href='cadastro.html'> Cadastre-se </a>
+        </p>
+          
+        
+      </div>
+      </div>
+    </body>
