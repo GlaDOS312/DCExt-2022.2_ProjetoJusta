@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url(https://imgur.com/GeLu5kq.jpeg);
+  background-image: url(https://clickrec.com.br/wp-content/uploads/2020/02/IMG_20200212_172854.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed
@@ -31,7 +31,7 @@ body {
 h1{
   text-align: center;
   margin-bottom: 20px;
-  color: #f15900
+  color: #0099f1
 }
 
 .label-float input{
@@ -39,7 +39,7 @@ h1{
   padding: 5px 5px;
   display: inline-block;
   border: 0;
-  border-bottom: 2px solid #f8ab06;
+  border-bottom: 2px solid #0099f1;
   background-color: transparent;
   outline: none;
   min-width: 180px;
@@ -57,11 +57,11 @@ h1{
 }
 
 .label-float input:focus{
-  border-bottom: 2px solid #f8ab06;
+  border-bottom: 2px solid #0099f1;
 }
 
 .label-float label{
-  color: #964901;
+  color: #010203;
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -114,7 +114,7 @@ p{
 }
 
 a{
-  color: #f15900;
+  color: #0099f1;
   font-weight: bold;
   text-decoration: none;
   transition: all .3s ease-out;

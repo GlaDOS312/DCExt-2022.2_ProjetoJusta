@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url(https://imgur.com/GeLu5kq.jpeg);
+  background-image: url(https://clickrec.com.br/wp-content/uploads/2020/02/IMG_20200212_172854.jpg);
   
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,7 +34,7 @@ body {
 h1{
   text-align: center;
   margin-bottom: 20px;
-  color: #964901
+  color: #0099f1
 }
 
 .label-float input{
@@ -64,7 +64,7 @@ h1{
 }
 
 .label-float label{
-  color: #964901;
+  color: #000000;
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -83,7 +83,7 @@ h1{
 button{
   background-color: transparent;
   border-color: #964901;
-  color: #964901;
+  color: #0099f1;
   padding: 7px;
   font-weight: bold;
   font-size: 12pt;
