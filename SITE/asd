@@ -1,4 +1,3 @@
-
 let btn = document.querySelector('.fa-eye')
 
 btn.addEventListener('click', ()=>{
@@ -28,12 +27,7 @@ function entrar(){
     senha: ''
   }
   
-  //listaUsers = JSON.parse(localStorage.getItem('listaUsers'))
-  
- 
-   
-  function getUser(){
-    axios.get(url)
+  axios.get(url)
     .then(response => {
         listaUsers = response.data.users
         listaUsers.forEach((item) => {
@@ -47,27 +41,31 @@ function entrar(){
             }
         })
         console.log(userValid)
-  if(email.value == userValid.email && senha.value == userValid.senha){
-    window.location.href = 'logado.html'
-    
-    let mathRandom = Math.random().toString(16).substr(2)
-    let token = mathRandom + mathRandom
-    
-    localStorage.setItem('token', token)
-    localStorage.setItem('userLogado', JSON.stringify(userValid))
-  } else {
-    userLabel.setAttribute('style', 'color: red')
-    user.setAttribute('style', 'border-color: red')
-    senhaLabel.setAttribute('style', 'color: red')
-    senha.setAttribute('style', 'border-color: red')
-    msgError.setAttribute('style', 'display: block')
-    msgError.innerHTML = 'Email ou senha incorretos'
-    email.focus()
-  }
+  
+        if(email.value == userValid.email && senha.value == userValid.senha){
+            window.location.href = 'logado.html'
+            
+            let mathRandom = Math.random().toString(16).substr(2)
+            let token = mathRandom + mathRandom
+            
+            localStorage.setItem('token', token)
+            localStorage.setItem('userLogado', JSON.stringify(userValid))
+        } else {
+            userLabel.setAttribute('style', 'color: red')
+            user.setAttribute('style', 'border-color: red')
+            senhaLabel.setAttribute('style', 'color: red')
+            senha.setAttribute('style', 'border-color: red')
+            msgError.setAttribute('style', 'display: block')
+            msgError.innerHTML = 'Email ou senha incorretos'
+            email.focus()
+        }
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}
 
-  function sair(){
+function sair(){
     localStorage.removeItem('token')
     window.location.href = 'login.html'
-  }
-  getUser()
 }
