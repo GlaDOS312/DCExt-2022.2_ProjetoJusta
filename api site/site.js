@@ -91,3 +91,4 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   
     res.json('Deleted User');
   })
+  
