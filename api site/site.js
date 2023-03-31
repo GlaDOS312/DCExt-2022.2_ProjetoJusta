@@ -47,7 +47,8 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
       cnpj: req.body.cnpjCad,
       sobrenome: req.body.sobrenomeCad,
       email: req.body.emailCad,
-      senha: req.body.senhaCad
+      senha: req.body.senhaCad,
+      saldo: req.body.saldoCad
     })
     res.json('Saved user');
     fs.writeFile("users.json",JSON.stringify(users), err => { //ESCREVE DADOS RECEBIDOS PELA API NO .JSON
@@ -71,7 +72,8 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
       cnpj: req.body.cnpjCad,
       sobrenome: req.body.sobrenomeCad,
       email: req.body.emailCad,
-      senha: req.body.senhaCad
+      senha: req.body.senhaCad,
+      saldo: req.body.saldoCad
     }
   
     users = users.map(user => {
@@ -90,5 +92,29 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
     users = users.filter(user => Number(user.id) !== Number(userId))
   
     res.json('Deleted User');
+  })
+  //Adicionar saldo na conta do usuário
+  app.route('/api/:id/saldo').post((req, res) => {
+    const userId = req.params.id;
+  
+    const user = users.find(user => Number(user.id) === Number(userId));
+  
+    if (!user) {
+      return res.json('Usuário não encontrado!')
+    }
+  
+    const valor = req.body.valor;
+  
+    if (!valor || valor <= 0) {
+      return res.json('Inválido');
+    }
+  
+    user.saldo += valor;
+  
+    res.json('Saldo adicionado com sucesso!');
+  
+    fs.writeFile("users.json",JSON.stringify(users), err => {
+      if (err) {throw err;} 
+    })
   })
   
