@@ -114,9 +114,9 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   if (user.saldo >= 60000) {
     user.tipo = 'Platinum';
   } else if (user.saldo >= 45000) {
-    user.tipo = 'Ouro';
+    user.tipo = 'Gold';
   } else if (user.saldo >= 30000) {
-    user.tipo = 'Prata';
+    user.tipo = 'Silver';
   } else if (user.saldo >= 15000) {
     user.tipo = 'Bronze';
   } else {
