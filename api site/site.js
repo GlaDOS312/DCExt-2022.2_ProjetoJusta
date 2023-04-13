@@ -122,11 +122,11 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   } else {
     user.tipo = 'Normal';
   }
+
+  res.json(`Parabéns, você é cliente tipo:  ${user.tipo}`);
   
-    res.json('Saldo adicionado com sucesso!');
-  
-    fs.writeFile("users.json",JSON.stringify(users), err => {
-      if (err) {throw err;} 
-    })
+  fs.writeFile("users.json",JSON.stringify(users), err => {
+    if (err) {throw err;} 
   })
+})
   
