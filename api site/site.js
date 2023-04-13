@@ -110,6 +110,18 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
     }
   
     user.saldo += valor;
+  // Verificar o tipo de cliente de acordo com o saldo
+  if (user.saldo >= 60000) {
+    user.tipo = 'Platinum';
+  } else if (user.saldo >= 45000) {
+    user.tipo = 'Ouro';
+  } else if (user.saldo >= 30000) {
+    user.tipo = 'Prata';
+  } else if (user.saldo >= 15000) {
+    user.tipo = 'Bronze';
+  } else {
+    user.tipo = 'Normal';
+  }
   
     res.json('Saldo adicionado com sucesso!');
   
