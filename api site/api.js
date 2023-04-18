@@ -1,14 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-
-
-
+const axios = require('axios');
 const app = express();
 
 
 app.use(cors());
 app.use(express.json());
+
+app.route('/api').get(async (req, res) => {
+  try {
+    const response = await axios.get('http://localhost:5500/api');
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro ao buscar usuários da API' });
+  }
+})
+
 
 app.listen(5500, () => {
     console.log('servidor online na porta http://localhost:5500/api');
