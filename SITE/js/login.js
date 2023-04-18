@@ -1,10 +1,10 @@
 function entrar(){
   const url = "http://localhost:5500/api"
   let user = document.querySelector('#cnpj')
-  let userLabel = document.querySelector('#CNPJLabel')
+  let userLabel = document.querySelector('#cnpjLabel')
   
-  let password = document.querySelector('#password')
-  let passwordLabel = document.querySelector('#passwordLabel')
+  let password = document.querySelector('#senha')
+  let passwordLabel = document.querySelector('#senhaLabel')
   
   let msgError = document.querySelector('#msgError')
   let listaUser = []
@@ -22,17 +22,18 @@ function entrar(){
     .then(response => {
       listaUser = response.data.users
       listaUser.forEach((item) => {
-        if(user.value == item.cnpjCad && password.value == item.senhaCad){
+        if(user.value == item.cnpj && password.value == item.senha){
           userValid = {
-            nome: item.nomeCad,
-            sobrenome: item.sobrenomeCad,
-            cnpj: item.cnpjCad,
-            senha: item.senhaCad
+            nome: item.nome,
+            sobrenome: item.sobrenome,
+            cnpj: item.cnpj,
+            senha: item.senha
           }
         }
       })
       // Verifica se o usuário é válido aqui, após a atribuição
-      if(user.value == userValid.cnpj && password.value == userValid.senha){
+      if(userValid.cnpj === user.value && userValid.senha === password.value){
+        localStorage.setItem('userLogado', JSON.stringify(userValid))
         window.location.href = 'logado.html'
         
         let mathRandom = Math.random().toString(16).substr(2)
@@ -51,7 +52,11 @@ function entrar(){
         cnpj.focus()
       }
     })
+     .catch(error => {
+      console.log(error)
+      msgError.setAttribute('style', 'display: block')
+      msgError.innerHTML = 'Não foi possível acessar a API de usuários'
+    })
   }
-
   getUser()
 }
