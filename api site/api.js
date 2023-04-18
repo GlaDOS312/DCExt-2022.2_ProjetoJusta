@@ -93,40 +93,9 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   
     res.json('Deleted User');
   })
-  //Adicionar saldo na conta do usuário
-  app.route('/api/:id/saldo').post((req, res) => {
-    const userId = req.params.id;
-  
-    const user = users.find(user => Number(user.id) === Number(userId));
-  
-    if (!user) {
-      return res.json('Usuário não encontrado!')
-    }
-  
-    const valor = req.body.valor;
-  
-    if (!valor || valor <= 0) {
-      return res.json('Inválido');
-    }
-  
-    user.saldo += valor;
-  // Verificar o tipo de cliente de acordo com o saldo
-  if (user.saldo >= 60000) {
-    user.tipo = 'Platinum';
-  } else if (user.saldo >= 45000) {
-    user.tipo = 'Gold';
-  } else if (user.saldo >= 30000) {
-    user.tipo = 'Silver';
-  } else if (user.saldo >= 15000) {
-    user.tipo = 'Bronze';
-  } else {
-    user.tipo = 'Normal';
-  }
-
-  res.json(`Parabéns, você é cliente tipo:  ${user.tipo}`);
   
   fs.writeFile("users.json",JSON.stringify(users), err => {
     if (err) {throw err;} 
   })
-})
+
   
