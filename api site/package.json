@@ -2,7 +2,7 @@
   "name": "node",
   "version": "1.0.0",
   "description": "primeira api",
-  "main": "site.js",
+  "main": "api.js",
   "scripts": {
     "start": "nodemon site.js"
   },

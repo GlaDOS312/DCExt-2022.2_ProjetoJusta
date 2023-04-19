@@ -1,3 +1,9 @@
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
+const document = dom.window.document;
+
   function verificarPagamento() {
     var numeroBoleto = document.getElementById("numeroBoleto").value;
     var dataVencimento = new Date(document.getElementById("dataVencimento").value);
