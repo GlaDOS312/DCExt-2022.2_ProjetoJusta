@@ -1,4 +1,4 @@
-function verificarPagamento() {
+  function verificarPagamento() {
     var numeroBoleto = document.getElementById("numeroBoleto").value;
     var dataVencimento = new Date(document.getElementById("dataVencimento").value);
     var valorBoleto = parseFloat(document.getElementById("valorBoleto").value);
@@ -17,5 +17,5 @@ function verificarPagamento() {
     }
   }
 module.exports = {
-  verificarPagamento : verificarPagamento
+  verificarPagamento : verificarPagamento;
 }
