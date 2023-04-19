@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pagamento de Boleto</title>
+    <script>
+    </script>
+  </head>
+  <body>
+    <h1>Pagamento de Boleto</h1>
+    <form>
+      <label for="numeroBoleto">Número do Boleto:</label>
+      <input type="text" id="numeroBoleto" name="numeroBoleto"><br><br>
+      <label for="dataVencimento">Data de Vencimento:</label>
+      <input type="text" id="dataVencimento" name="dataVencimento" placeholder="dd/mm/aaaa"><br><br>
+      <label for="valorBoleto">Valor do Boleto:</label>
+      <input type="text" id="valorBoleto" name="valorBoleto"><br><br>
+      <input type="button" value="Pagar Boleto" onclick="verificarPagamento()">
+    </form>
+ <script src="boleto.js"></script>
+  </body>
+</html>
