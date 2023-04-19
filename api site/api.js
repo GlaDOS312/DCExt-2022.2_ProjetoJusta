@@ -128,6 +128,11 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   
     res.json(resultado);
   });
-  
+  app.post('/pagarBoleto', (req, res) => {
+    const {numeroBoleto, valorBoleto, numeroCartao, validadeCartao, codigoSeguranca } = req.body;
+
+    pagarBoleto(numeroBoleto, valorBoleto, numeroCartao, validadeCartao, codigoSeguranca );
+    res.send('Pagamento com cartão de crédito processado com sucesso!');
+  });
 
   
