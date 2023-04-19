@@ -17,7 +17,6 @@
       }
     }
   }
-
-  module.exports = {
-    verificarPagamento : verificarPagamento
-  };
+module.exports = {
+  verificarPagamento : verificarPagamento
+}
