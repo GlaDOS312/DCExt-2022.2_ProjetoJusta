@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+</html>
+<head>
+	<title>Pagar Com Cartao de Credito</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Pagar Com Cartao de Credito</h1>
+	<form>
+		<label for="numeroBoleto">Número do Boleto:</label>
+		<input type="text" id="numeroBoleto" name="numeroBoleto">
+        <p></p>
+		<label for="valorBoleto">Valor do Boleto:</label>
+		<input type="number" id="valorBoleto" name="valorBoleto">
+        <p></p>
+		<label for="cartaoCredito">Cartão de Crédito:</label>
+		<input type="text" id="cartaoCredito" name="cartaoCredito" placeholder="Número do Cartão">
+		<input type="text" id="validadeCartao" name="validadeCartao" placeholder="Validade (MM/AA)">
+		<input type="text" id="codigoSeguranca" name="codigoSeguranca" placeholder="Código de Segurança">
+        <p></p>
+		<button type="button" onclick="pagarBoleto()">Pagar</button>
+	</form>
+	<script src="boletocard.js"></script>
+</body>
+</html>
