@@ -3,6 +3,12 @@ const cors = require('cors');
 const fs = require('fs');
 const axios = require('axios');
 const app = express();
+const { verificarPagamento } = require('./boleto.js');
+const { realizarRecarga } = require('./recarga.js');
+const { pagarBoleto } = require('./boletocard.js');
+
+
+
 
 
 app.use(cors());
@@ -106,5 +112,22 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   fs.writeFile("users.json",JSON.stringify(users), err => {
     if (err) {throw err;} 
   })
+
+  app.post('/api/recarga', (req, res) => {
+    const { numero, operadora, valor } = req.body;
+  
+    realizarRecarga(numero, operadora, valor);
+  
+    res.json({ message: 'Recarga realizada com sucesso!' });
+  });
+
+  app.post('/verificar-pagamento', (req, res) => {
+    const { numeroBoleto, dataVencimento, valorBoleto } = req.body;
+  
+    const resultado = verificarPagamento(numeroBoleto, dataVencimento, valorBoleto);
+  
+    res.json(resultado);
+  });
+  
 
   
