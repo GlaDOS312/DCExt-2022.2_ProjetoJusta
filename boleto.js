@@ -17,5 +17,5 @@
     }
   }
 module.exports = {
-  verificarPagamento : verificarPagamento;
+  verificarPagamento : verificarPagamento
 }
