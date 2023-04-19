@@ -16,3 +16,6 @@
       }
     }
   }
+module.exports = {
+  verificarPagamento : verificarPagamento;
+}
