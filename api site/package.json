@@ -1,7 +1,7 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "primeira api",
+  "description": "Api Justa",
   "main": "api.js",
   "scripts": {
     "start": "nodemon api.js"
