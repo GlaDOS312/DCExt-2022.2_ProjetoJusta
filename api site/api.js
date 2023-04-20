@@ -4,15 +4,24 @@ const fs = require('fs');
 const axios = require('axios');
 const app = express();
 const { verificarPagamento } = require('./boleto.js');
-const { realizarRecarga } = require('./recarga.js');
+const recarga = require('./recarga.js');
 const { pagarBoleto } = require('./boletocard.js');
+const bodyParser = require("body-parser");
+let users = require('./users.json');
 
 
-
-
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SITE
+  if(err){
+    throw err;
+  }
+
+  users = JSON.parse(data); // preencher a variável com os dados lidos do arquivo
+})
+
 
 app.route('/api').get(async (req, res) => {
   try {
@@ -24,20 +33,9 @@ app.route('/api').get(async (req, res) => {
   }
 })
 
-
 app.listen(5500, () => {
     console.log('servidor online na porta http://localhost:5500/api');
-})
-
-fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SITE
-    if(err){
-      throw err;
-    }
-  
-    users = JSON.parse(data);
-    
-  })
-  
+})  
   app.route('/api').get((req, res) => res.json({ //SITE
     users
   }))
@@ -45,7 +43,7 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   app.route('/api/:id').get((req, res) => {
     const userId = req.params.id;
   
-    const user = users.find(user => Number(user.id) === Number(userId));
+    const user = user.find(user => Number(user.id) === Number(userId));
   
     if (!user) {
       return res.json('User nor found!')
@@ -75,7 +73,7 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
   app.route('/api/:id').put((req, res) => {
     const userId = req.params.id;
   
-    const user = users.find(user => Number(user.id) === Number(userId));
+    const user = user.find(user => Number(user.id) === Number(userId));
   
     if (!user) {
       return res.json('User nor found!')
@@ -113,12 +111,13 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
     if (err) {throw err;} 
   })
 
-  app.post('/api/recarga', (req, res) => {
-    const { numero, operadora, valor } = req.body;
-  
-    realizarRecarga(numero, operadora, valor);
-  
-    res.json({ message: 'Recarga realizada com sucesso!' });
+  app.post("/recarga", function(req, res) {
+    const numero = req.body.numero;
+    const operadora = req.body.operadora;
+    const valor = parseInt(req.body.valor);
+
+    const resultado = recarga.realizarRecarga(numero, operadora, valor);
+    res.json(resultado);
   });
 
   app.post('/verificar-pagamento', (req, res) => {
