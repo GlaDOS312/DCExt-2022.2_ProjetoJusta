@@ -8,7 +8,6 @@ const recarga = require('./recarga.js');
 const { pagarBoleto } = require('./boletocard.js');
 const bodyParser = require("body-parser");
 let users = require('./users.json');
-const { simularTransferencia, validarContaBancaria } = require('./caminho/para/api.js');
 
 
 

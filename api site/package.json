@@ -4,7 +4,7 @@
   "description": "primeira api",
   "main": "api.js",
   "scripts": {
-    "start": "nodemon site.js"
+    "start": "nodemon api.js"
   },
   "author": "",
   "license": "ISC",
