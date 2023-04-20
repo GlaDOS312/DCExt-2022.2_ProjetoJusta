@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<title>Transferências</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Transferir</h1>
+	<form>
+		<label for="nome-receptor">Nome do Receptor:</label>
+		<input type="text" id="nome-receptor" name="nome-receptor"><br>
+
+		<label for="cpf-cnpj-receptor">CPF/CNPJ do Receptor:</label>
+		<input type="text" id="cpf-cnpj-receptor" name="cpf-cnpj-receptor"><br>
+
+        <label for="banco-receptor">Banco:</label>
+<select id="banco-receptor" name="banco-receptor">
+  <option value="bradesco">Bradesco</option>
+  <option value="itau">Itaú</option>
+  <option value="bb">Banco do Brasil</option>
+  <option value="caixa">Caixa Econômica Federal</option>
+  <option value="santander">Santander</option>
+  <option value="outros">Outros</option>
+</select>
+<div id="outros-bancos" style="display: none;">
+  <label for="outros-banco-receptor">Digite o nome do banco:</label>
+  <input type="text" id="outros-banco-receptor" name="outros-banco-receptor">
+</div>
+<p></p>
+		<label for="agencia-receptor">Agência do Receptor:</label>
+		<input type="text" id="agencia-receptor" name="agencia-receptor"><br>
+
+		<label for="conta-receptor">Conta do Receptor:</label>
+		<input type="text" id="conta-receptor" name="conta-receptor"><br>
+
+		<label for="valor-transferencia">Valor da Transferência:</label>
+			<input type="text" id="valor-transferencia" name="valor-transferencia"><br>
+
+		<button type="button" onclick="simularTransferencia()">Confirmar Transferência</button>
+	</form>
+	<div id="resultado-transferencia"></div>
+
+	<script src="/api site/transferencia.js"></script>
+</body>
+</html>
