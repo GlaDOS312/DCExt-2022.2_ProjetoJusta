@@ -66,7 +66,9 @@ app.route('/api/users').get((req, res) => res.json({
       senha: req.body.senhaCad,
       conta: req.body.contaCad,
       agencia: req.body.contaCad,
-      tipo: req.body.tipoCad
+      tipo: req.body.tipoCad,
+      numero: req.body.numeroCad,
+      operadora: req.body.operadoraCad
     })
     res.json('Saved user');
     fs.writeFile("users.json",JSON.stringify(users), err => { //ESCREVE DADOS RECEBIDOS PELA API NO .JSON
@@ -94,7 +96,9 @@ app.route('/api/users').get((req, res) => res.json({
       saldo: req.body.saldoCad,
       conta: req.body.contaCad,
       agencia: req.body.contaCad,
-      tipo: req.body.tipoCad
+      tipo: req.body.tipoCad,
+      numero: req.body.numeroCad,
+      operadora: req.body.operadoraCad
     }
   
     users = users.map(user => {
