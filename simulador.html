@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<title>Simulador de Parcelamento</title>
+	<script src="simulador.js"></script>
+</head>
+<body>
+	<h1>Simulador de Parcelamento</h1>
+	<label for="valor">Valor da venda:</label>
+	<input type="text" id="valor">
+	<br><br>
+	<label for="parcelas">Número de parcelas:</label>
+	<select id="parcelas">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	</select>
+	<br><br>
+	<label for="tipo">Tipo de cliente:</label>
+	<select id="tipo">
+		<option value="bronze">Bronze</option>
+		 <option value="prata">Prata</option>
+		<option value="ouro">Ouro</option>
+	</select>
+	<br><br>
+	<label for="antecipacao">Antecipação de recebimento (em dias):</label>
+	<input type="text" id="antecipacao">
+	<br><br>
+	<button onclick="calcularParcelamento()">Calcular</button>
+	<br><br>
+	<div id="resultado"></div>
+</body>
+</html>
