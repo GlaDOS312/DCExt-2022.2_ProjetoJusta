@@ -5,6 +5,7 @@ const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
 const document = dom.window.document;
 
 let saldo = 5000;
+let valorTransferencia = 10000;
 
 function simularTransferencia() {
 if (bancoReceptor === "outros") {
@@ -63,7 +64,7 @@ if (bancoReceptor === "outros") {
     document.getElementById("resultado-transferencia").innerHTML = "Transferência de R$" + valorTransferencia + " para " + nomeReceptor + " (" + cpfCnpjReceptor + ") no banco " + bancoReceptor + " agência " + agenciaReceptor + " conta " + contaReceptor + ". Tipo de transferência: " + tipoTransferencia + ".";
     saldo -= valorTransferencia;
 
-    alert(`Transferência realizada com sucesso!\n\nBanco: ${banco.replace(/<br>/g, '\n')} Agência: ${agencia.replace(/<br>/g, '\n')} Conta: ${conta.replace(/<br>/g, '\n')} Tipo: ${tipo.replace(/<br>/g, '\n')} Valor: R$${valor}`);
+    
 
 
   }
@@ -89,7 +90,8 @@ if (bancoReceptor === "outros") {
 
   saldo -= valorTransferencia;
 
-  alert(`Transferência realizada com sucesso!\n\nBanco: ${banco}<br>Agência: ${agencia}<br>Conta: ${conta}<br>Tipo: ${tipo}<br>Valor: R$${valor}`);
+  
+
 
   module.exports = {
     simularTransferencia,

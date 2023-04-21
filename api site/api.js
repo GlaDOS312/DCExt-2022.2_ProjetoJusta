@@ -8,7 +8,8 @@ const recarga = require('./recarga.js');
 const { pagarBoleto } = require('./boletocard.js');
 const bodyParser = require("body-parser");
 let users = require('./users.json');
-
+const {validarContaBancaria} = require('./transferencia.js');
+const {simularTransferencia} = require('./transferencia.js');
 
 
 app.use(bodyParser.json());
@@ -37,9 +38,10 @@ app.route('/api').get(async (req, res) => {
 app.listen(5500, () => {
     console.log('servidor online na porta http://localhost:5500/api');
 })  
-  app.route('/api').get((req, res) => res.json({ //SITE
-    users
-  }))
+app.route('/api/users').get((req, res) => res.json({
+  users
+}))
+
   
   app.route('/api/:id').get((req, res) => {
     const userId = req.params.id;
@@ -62,7 +64,9 @@ app.listen(5500, () => {
       sobrenome: req.body.sobrenomeCad,
       email: req.body.emailCad,
       senha: req.body.senhaCad,
-      saldo: req.body.saldoCad
+      conta: req.body.contaCad,
+      agencia: req.body.contaCad,
+      tipo: req.body.tipoCad
     })
     res.json('Saved user');
     fs.writeFile("users.json",JSON.stringify(users), err => { //ESCREVE DADOS RECEBIDOS PELA API NO .JSON
@@ -87,7 +91,10 @@ app.listen(5500, () => {
       sobrenome: req.body.sobrenomeCad,
       email: req.body.emailCad,
       senha: req.body.senhaCad,
-      saldo: req.body.saldoCad
+      saldo: req.body.saldoCad,
+      conta: req.body.contaCad,
+      agencia: req.body.contaCad,
+      tipo: req.body.tipoCad
     }
   
     users = users.map(user => {
@@ -151,5 +158,5 @@ app.listen(5500, () => {
   
     res.json({ isValid: isValid });
   });
-
+  
   
