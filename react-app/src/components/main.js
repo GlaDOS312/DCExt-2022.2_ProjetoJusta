@@ -16,7 +16,7 @@ export default class Main extends Component {
         const { novaTarefa } = this.state;
 
         return (
-            <div className="main"> 
+            <div className="main">
             <h1>{novaTarefa}</h1>
 
             <form action="#">
