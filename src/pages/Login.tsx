@@ -3,7 +3,7 @@ import React from 'react';
 //import { add } from 'ionicons/icons';
 import { Redirect, Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
-import Entrar from './Entrar';
+import TelaPrincipal from './TelaPrincipal';
 import { useHistory } from 'react-router';
 import { RouteComponentProps} from 'react-router';
 import './Estilo.css';
@@ -36,13 +36,13 @@ const Login: React.FC<RouteComponentProps> = () => {
 
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route path="/entrar" component={Entrar} />
+            <Route path="/telaprincipal" component={TelaPrincipal} />
             <Redirect exact from="/" to="/login" />
           </IonRouterOutlet>
         </IonReactRouter>
 
 
-        <IonButton  shape="round" className="botaobranco" onClick={() => history.push('/entrar')}>Entrar</IonButton>
+        <IonButton  shape="round" className="botaobranco" onClick={() => history.push('/telaprincipal')}>Entrar</IonButton>
 
         </div>
       </IonContent>
@@ -51,5 +51,3 @@ const Login: React.FC<RouteComponentProps> = () => {
   );
 };
 export default Login;
-/*Cada visualização deve conter um componente IonPage.
- As transições de página não funcionarão corretamente sem ela. */
