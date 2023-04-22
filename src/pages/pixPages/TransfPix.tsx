@@ -91,7 +91,7 @@ const TransfPix: React.FC = () => {
           <IonRow>
             <IonCol>
               <IonItem>
-                <IonLabel position="floating">Digite o {tipoChave}</IonLabel>
+                <IonLabel position="floating">{tipoChave}</IonLabel>
                 <IonInput
                   ref={chaveRef}
                   type={tipoChave === "E-mail" ? "text" : "number"}
