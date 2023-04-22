@@ -1,7 +1,10 @@
 
-.card{
-    background-color: rgb(9, 31, 81);
-    color: aliceblue;
+ion-modal {
+  --height: auto;
+}
+
+.saldo{
+    color:antiquewhite;
     padding: 2%;
 }
 .block {
@@ -11,12 +14,16 @@
 }
 
 .title {
-  width: 100%; 
+  padding-top: 5%;
   text-align: center;
   left: 0; 
   height: 0;
 }
 
-ion-modal {
-  --height: auto;
+.ion-item{
+  height: 11%;
+}
+
+.ion-list{
+  height: 100%;
 }
