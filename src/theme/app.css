@@ -1,0 +1,22 @@
+
+.card{
+    background-color: rgb(9, 31, 81);
+    color: aliceblue;
+    padding: 2%;
+}
+.block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  width: 100%; 
+  text-align: center;
+  left: 0; 
+  height: 0;
+}
+
+ion-modal {
+  --height: auto;
+}
