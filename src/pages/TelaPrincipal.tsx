@@ -39,7 +39,6 @@ const TelaPrincipal: React.FC = () => {
             name={"Recarga de Celular"}
           />
         </IonList>
-        <SaldoCartao />
       </IonContent>
     </IonPage>
   );
