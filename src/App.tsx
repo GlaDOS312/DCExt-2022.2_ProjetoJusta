@@ -29,6 +29,12 @@ import OpcoesBoleto from "./pages/boletoPages/OpcoesBoleto";
 import CartaoBoleto from "./pages/boletoPages/CartaoBoleto";
 import UserConfig from "./pages/userPages/UserConfig";
 import Recarga from "./pages/recargaPages/Recarga";
+import Home from './pages/Home';
+import Login from './pages/Login';
+import AbrirConta from './pages/AbrirConta';
+import Comecar from './pages/Comecar';
+
+
 
 setupIonicReact();
 
@@ -49,7 +55,6 @@ const App: React.FC = () => {
           <Route path="/login" component={Login} />
           <Route path="/abrirconta" component={AbrirConta} />
           <Route path="/comecar" component={Comecar} />
-          <Route path="/paginaprincipal" component={PaginaPrincipal} />
           <Redirect exact from="/" to="/home" />
 
         </IonRouterOutlet>
