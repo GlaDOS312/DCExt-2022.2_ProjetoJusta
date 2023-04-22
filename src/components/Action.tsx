@@ -12,7 +12,7 @@ const Action: React.FC<{
   const history = useHistory();
   
   return (
-    <IonItem>
+    <IonItem className="ion-item">
       <IonButton
         onClick={() => history.push(props.route)}
         className="block"
