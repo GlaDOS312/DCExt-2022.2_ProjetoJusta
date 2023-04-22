@@ -10,7 +10,6 @@ import {
 import ToolBar from "../components/ToolBar";
 import Action from "../components/Action";
 import SaldoVendas from "../components/SaldoVendas";
-import SaldoCartao from "../components/SaldoCartao";
 
 const TelaPrincipal: React.FC = () => {
   return (
