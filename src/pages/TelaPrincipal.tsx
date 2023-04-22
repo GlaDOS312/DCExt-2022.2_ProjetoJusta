@@ -18,7 +18,7 @@ const TelaPrincipal: React.FC = () => {
       <ToolBar />
       <IonContent>
         <SaldoVendas />
-        <IonList>
+        <IonList className="ion-list">
           <Action
             route={"/TransfBanc"}
             icon={cashOutline}
