@@ -45,7 +45,13 @@ const App: React.FC = () => {
           <Route path="/CartaoBoleto" component={CartaoBoleto} />
           <Route path="/UserConfig" component={UserConfig} />
           <Route path="/Recarga" component={Recarga} />
-          <Redirect exact from="/" to="/TelaPrincipal" />
+          <Route path="/home" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/abrirconta" component={AbrirConta} />
+          <Route path="/comecar" component={Comecar} />
+          <Route path="/paginaprincipal" component={PaginaPrincipal} />
+          <Redirect exact from="/" to="/home" />
+
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
