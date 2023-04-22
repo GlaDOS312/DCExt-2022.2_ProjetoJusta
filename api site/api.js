@@ -25,20 +25,12 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
 })
 
 
-app.route('/api').get(async (req, res) => {
-  try {
-    const response = await axios.get('http://localhost:5500/api');
-    res.json(response.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Erro ao buscar usuários da API' });
-  }
-})
+
 
 app.listen(5500, () => {
     console.log('servidor online na porta http://localhost:5500/api');
 })  
-app.route('/api/users').get((req, res) => res.json({
+app.route('/api').get((req, res) => res.json({
   users
 }))
 
@@ -46,10 +38,10 @@ app.route('/api/users').get((req, res) => res.json({
   app.route('/api/:id').get((req, res) => {
     const userId = req.params.id;
   
-    const user = user.find(user => Number(user.id) === Number(userId));
+    const user = users.find(user => Number(user.id) === Number(userId));
   
     if (!user) {
-      return res.json('User nor found!')
+      return res.json('User not found!')
     }
   
     res.json(user);
@@ -83,7 +75,7 @@ app.route('/api/users').get((req, res) => res.json({
     const user = user.find(user => Number(user.id) === Number(userId));
   
     if (!user) {
-      return res.json('User nor found!')
+      return res.json('User not found!')
     }
   
     const updatedUser = {
