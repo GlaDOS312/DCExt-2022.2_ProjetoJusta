@@ -1,23 +1,23 @@
-import './App.css';
+import axios from 'axios';
 
-function App() {
-  const name = "João"
-  const newName = name.toUpperCase()
+function MyComponent() {
+  const [data, setData] = useState([]);
 
-  function sum(a,b){
-    return a + b
-  }
-
-  const url = "https://placeholder.com/150"
+  useEffect(() => {
+    axios.get('http://localhost:5500/api')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   return (
-    <div className="App">
-      <h>Olá Mundo</h>
-      <p>Olá, {newName}.</p> 
-      <p>A soma é {sum(1,8)}</p>
-      <img src ={url} alt="Minha Imagem" />
+    <div>
+      {data.map(item => (
+        <p key={item.id}>{item.text}</p>
+      ))}
     </div>
   );
 }
-
-export default App;
