@@ -60,3 +60,10 @@ function entrar(){
   }
   getUser()
 }
+
+function sair(){
+    localStorage.removeItem('token')
+    localStorafe.removeItem('userLogado')
+    alert("Redirecionando para a tela de login")
+    window.location.href = 'login.html'
+}
