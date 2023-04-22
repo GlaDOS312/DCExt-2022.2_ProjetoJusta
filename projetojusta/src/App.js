@@ -7,8 +7,8 @@ function App() {
   function sum(a,b){
     return a + b
   }
-
-  const url = "https://placeholder.com/150"
+ 
+ const url = "https://placeholder.com/150"
 
   return (
     <div className="App">
@@ -17,7 +17,7 @@ function App() {
       <p>A soma é {sum(1,8)}</p>
       <img src ={url} alt="Minha Imagem" />
     </div>
-  );
+  )
 }
 
 export default App;
