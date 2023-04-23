@@ -14,7 +14,10 @@ function entrar(){
     cnpj: '',
     sobrenome: '',
     email: '',
-    senha: ''
+    senha: '',
+    saldo:'',
+    agencia:'',
+    conta:''
   }
   
   function getUser(){
@@ -27,7 +30,11 @@ function entrar(){
             nome: item.nome,
             sobrenome: item.sobrenome,
             cnpj: item.cnpj,
-            senha: item.senha
+            email: item.email,
+            senha: item.senha,
+            saldo: item.saldo,
+            agencia: item.agencia,
+            conta: item.conta
           }
         }
       })
