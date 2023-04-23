@@ -22,6 +22,5 @@ function App() {
     </div>
   );
 }
->>>>>>> b187fd7d14e3f93123daafca55829031fe708ee8
 
-export default MyComponent;
+export default App;
