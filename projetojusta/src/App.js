@@ -1,23 +1,33 @@
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function App() {
-  const name = "João"
-  const newName = name.toUpperCase()
+<<<<<<< HEAD
 
-  function sum(a,b){
-    return a + b
-  }
- 
- const url = "https://placeholder.com/150"
+=======
+function MyComponent() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5500/api')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   return (
-    <div className="App">
-      <h>Olá Mundo</h>
-      <p>Olá, {newName}.</p> 
-      <p>A soma é {sum(1,8)}</p>
-      <img src ={url} alt="Minha Imagem" />
+    <div>
+      {data.map(user => (
+        <div key={user.id}>
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
+>>>>>>> b187fd7d14e3f93123daafca55829031fe708ee8
 
-export default App;
+export default MyComponent;
