@@ -5,6 +5,15 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background:#fff;
+  background-size: cover;
+  background-position: center;
+}
 header{
   position: fixed;
   top: 0;
@@ -17,7 +26,6 @@ header{
   align-items:  center;
   z-index: 99;
 }
-
 .logo{
   size: 2em;
   color: #fff;
