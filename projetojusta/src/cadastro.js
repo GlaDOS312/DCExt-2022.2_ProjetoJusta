@@ -78,7 +78,7 @@ function Cadastro() {
         <label>Operadora:</label>
         <input type="text" value={operadoraCad} onChange={e => setOperadora(e.target.value)} />
       </div>
-      <button type="submit">astrar</button>
+      <button type="submit">Cadastrar</button>
     </form>
   );
 }
