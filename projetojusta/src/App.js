@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function MyComponent() {
-  const [data, setData] = useState([]);
+function App() {
+  const name = "João"
+  const newName = name.toUpperCase()
 
-  useEffect(() => {
-    axios.get('http://localhost:5500/api')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+  function sum(a,b){
+    return a + b
+  }
+ 
+ const url = "https://placeholder.com/150"
 
   return (
     <div>
@@ -25,5 +22,6 @@ function MyComponent() {
     </div>
   );
 }
+>>>>>>> b187fd7d14e3f93123daafca55829031fe708ee8
 
 export default MyComponent;
