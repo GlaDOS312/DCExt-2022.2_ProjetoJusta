@@ -1,6 +1,6 @@
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
-import "./theme/variables.css";
+//import "./theme/variables.css";
 import "./theme/app.css";
 
 /* Basic CSS for apps built with Ionic */
