@@ -56,8 +56,9 @@ app.route('/api').get((req, res) => res.json({
       sobrenome: req.body.sobrenomeCad,
       email: req.body.emailCad,
       senha: req.body.senhaCad,
+      saldo: req.body.saldoCad,
       conta: req.body.contaCad,
-      agencia: req.body.contaCad,
+      agencia: req.body.agenciaCad,
       tipo: req.body.tipoCad,
       numero: req.body.numeroCad,
       operadora: req.body.operadoraCad
@@ -87,7 +88,7 @@ app.route('/api').get((req, res) => res.json({
       senha: req.body.senhaCad,
       saldo: req.body.saldoCad,
       conta: req.body.contaCad,
-      agencia: req.body.contaCad,
+      agencia: req.body.agenciaCad,
       tipo: req.body.tipoCad,
       numero: req.body.numeroCad,
       operadora: req.body.operadoraCad
