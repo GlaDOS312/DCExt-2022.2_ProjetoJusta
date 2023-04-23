@@ -19,6 +19,15 @@ let email = document.querySelector('#email')
 let labelEmail = document.querySelector('#labelEmail')
 let validEmail = false
 
+let saldo = document.querySelector('#saldo')
+let labelSaldo = document.querySelector('#labelSaldo')
+
+let agencia = document.querySelector('#agencia')
+let labelAgencia = document.querySelector('#labelAgencia')
+
+let conta = document.querySelector('#conta')
+let labelConta = document.querySelector('#labelConta')
+
 let senha = document.querySelector('#senha')
 let labelSenha = document.querySelector('#labelSenha')
 let validSenha = false
@@ -114,7 +123,10 @@ function cadastro(){
       cnpjCad: cnpj.value,
       sobrenomeCad: sobrenome.value,
       emailCad: email.value,
-      senhaCad: senha.value
+      senhaCad: senha.value,
+      saldoCad: saldo.value,
+      agenciaCad: agencia.value,
+      contaCad: conta.value
     }
     
 
