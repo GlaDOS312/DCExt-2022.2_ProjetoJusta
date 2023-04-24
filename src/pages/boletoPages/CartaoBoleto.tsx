@@ -20,7 +20,7 @@ const CartaoBoleto: React.FC = () => {
     }
   return (
     <IonPage>
-      <ReturnToolbar title={"Pagar com cartão de Crédito"} />
+      <ReturnToolbar title={"Pagar com cartão de Crédito"} route={"/OpcoesBoleto"}/>
       <IonContent>
         <IonGrid>
           <IonRow>
