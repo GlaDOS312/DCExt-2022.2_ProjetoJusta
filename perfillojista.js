@@ -76,6 +76,15 @@ const taxas = {
   let cashbackP = document.getElementById("cashback");
   let isencaoP = document.getElementById("isencao");
 
+  function exibirBeneficios(perfil) {
+    const beneficios = taxas[perfil];
+    const isencao = beneficios.isencaoMaquina ? "Sim" : "Não";
+    const cashback = beneficios.cashback.map(({ valor, percentual }) => `R$${valor.toFixed(2)}: ${percentual * 100}%`).join("<br>");
+  
+    isencaoP.innerHTML = isencao;
+    cashbackP.innerHTML = cashback;
+  }
+
  function exibirTaxas() {
     var perfil = document.getElementById("perfil").value;
     var faturamento = parseFloat(document.getElementById("faturamento").value.replace(",", "."));
