@@ -76,12 +76,24 @@ const taxas = {
   let cashbackP = document.getElementById("cashback");
   let isencaoP = document.getElementById("isencao");
 
-  function exibirTaxas() {
+ function exibirTaxas() {
     var perfil = document.getElementById("perfil").value;
-    var faturamento = parseFloat(document.getElementById("faturamento").value);
+    var faturamento = parseFloat(document.getElementById("faturamento").value.replace(",", "."));
   
     if (isNaN(faturamento)) {
       document.getElementById("resultado").innerHTML = "Faturamento inválido";
+      return;
+    } else if (faturamento > 10000 && perfil == "bronze") {
+      alert("O faturamento é acima do perfil selecionado!");
+      return;
+    } else if (faturamento > 29000 && perfil == "prata") {
+      alert("O faturamento é acima do perfil selecionado!");
+      return;
+    } else if (perfil == "prata" && faturamento < 10000) {
+       alert("O valor está abaixo do perfil selecionado!");
+       return;
+    } else if (perfil == "ouro" && faturamento < 30000) {
+      alert("O valor está abaixo do perfil selecionado!");
       return;
     }
   
@@ -101,26 +113,6 @@ const taxas = {
     }
   
     exibirBeneficios(perfil);
-  }
-
-  function exibirTaxas() {
-    var perfil = document.getElementById("perfil").value;
-    var faturamento = parseFloat(document.getElementById("faturamento").value.replace(",", "."));
-  
-    if (faturamento > 10000 && perfil == "bronze") {
-      alert("O faturamento é acima do perfil selecionado!");
-      return;
-    } else if (faturamento > 29000 && perfil == "prata") {
-      alert("O faturamento é acima do perfil selecionado!");
-      return;
-    } else if (perfil == "prata" && faturamento < 10000) {
-       alert("O valor está abaixo do perfil selecionado!");
-       return;
-    } else if (perfil == "ouro" && faturamento < 30000) {
-      alert("O valor está abaixo do perfil selecionado!");
-      return;
-    }
-  
   }
   
   function atualizarTabela() {
