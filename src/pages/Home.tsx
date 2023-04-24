@@ -1,18 +1,16 @@
-import {IonButton, IonRouterOutlet, IonIcon, IonContent, IonPage } from '@ionic/react';
-//import ExploreContainer from '../components/ExploreContainer';
-import './Estilo.css';
-import Login from './Login';
-import AbrirConta from './AbrirConta';
-//clicar botao redirecionar para outra pagina
-import { useHistory } from 'react-router';
-import { RouteComponentProps} from 'react-router';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import {
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonPage,
+} from "@ionic/react";
+import { useHistory } from "react-router";
+
 import Justalogo from "./justalogo.jpeg";
 import { chatbubble } from 'ionicons/icons';
 
 
-const Home: React.FC<RouteComponentProps> = () => {
+const Home: React.FC= () => {
   const history = useHistory();
   return (
 
