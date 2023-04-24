@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tabela de Taxas e Benefícios</title>
+  </head>
+  <body>
+    <h1>Escolha seu perfil</h1>
+    <p>Selecione seu perfil com base em seu faturamento mensal:</p>
+    <small style="font-size: 0.8em;">*Bronze até R$ 9.999, Prata de R$ 10.000 até R$ 29.999 e Ouro a partir de R$ 30.000</small>
+    <select id="perfil">
+      <option value="bronze">Bronze</option>
+      <option value="prata">Prata</option>
+      <option value="ouro">Ouro</option>
+    </select>
+    <br><br>
+    <label for="faturamento">Faturamento mensal:</label>
+    <input type="text" id="faturamento">
+    <button onclick="exibirTaxas()">Escolher perfil</button>
+    <p id="resultado"></p>
+    
+    <button id="btn-atualizar">Atualizar taxas</button>
+    <table id="tabela-taxas">
+      <thead>
+        <tr>
+          <th>Parcelas</th>
+          <th>Taxa Débito</th>
+          <th>Taxa Crédito</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div id="beneficios">
+        <h2>Benefícios</h2>
+        <p id="cashback"></p>
+        <p id="isencao"></p>
+      </div>
+      
+    <script src="perfillojista.js"></script>
+  </body>
+</html>
