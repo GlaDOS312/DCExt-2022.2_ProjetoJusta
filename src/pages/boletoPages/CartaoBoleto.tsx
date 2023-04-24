@@ -39,31 +39,31 @@ const CartaoBoleto: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
+          <IonTitle className="white">Cartão de Crédito:</IonTitle>
           <IonRow>
-            <IonTitle>Cartão de Crédito:</IonTitle>
             <IonCol>
               <IonItem>
                 <IonLabel position="floating">Número do Cartão</IonLabel>
                 <IonInput type="number" ref={numcardRef}></IonInput>
               </IonItem>
-            </IonCol>
-            <IonCol>
               <IonItem>
                 <IonLabel position="floating">Validade(MM/AA)</IonLabel>
                 <IonInput type="text" ref={validadecardRef}></IonInput>
               </IonItem>
-            </IonCol>
-            <IonCol>
               <IonItem>
                 <IonLabel position="floating">Código de Segurança</IonLabel>
                 <IonInput type="number" ref={codicardRef}></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonButton className="btn" fill="clear" onClick={pagarBoleto}>
+                Continuar
+              </IonButton>
+            </IonCol>
+          </IonRow>
         </IonGrid>
-        <IonButton onClick={pagarBoleto} fill="outline">
-          Continuar
-        </IonButton>
       </IonContent>
     </IonPage>
   );
