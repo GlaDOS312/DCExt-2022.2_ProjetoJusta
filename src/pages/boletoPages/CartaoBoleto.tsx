@@ -1,8 +1,20 @@
-import { IonPage, IonContent, IonList, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonTitle, IonButton } from "@ionic/react";
+import { 
+  IonPage, 
+  IonContent, 
+  IonGrid, 
+  IonRow, 
+  IonCol, 
+  IonItem, 
+  IonLabel, 
+  IonInput, 
+  IonTitle, 
+  IonButton, 
+  IonAlert } from "@ionic/react";
 import ReturnToolbar from "../../components/returnToolbar";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const CartaoBoleto: React.FC = () => {
+  const [error, setError] = useState<string>();
 
   const numboletoRef = useRef<HTMLIonInputElement>(null);
   const valorboletoRef = useRef<HTMLIonInputElement>(null);
@@ -16,11 +28,31 @@ const CartaoBoleto: React.FC = () => {
       let numCard =  numcardRef.current?.value;
       let validadeCard = validadecardRef.current?.value;
       let codiCard = codicardRef.current?.value;
+
+      if (!valBoleto || !numBoleto || !numCard|| !validadeCard || !codiCard) {
+        setError("Preencher corretamente antes de continuar");
+        return;
+      } else if (+valBoleto < 0.01) {
+        setError("Valor do Boleto Incorreto");
+        return;
+      }   
       
     }
   return (
     <IonPage>
-      <ReturnToolbar title={"Pagar com cartão de Crédito"} route={"/OpcoesBoleto"}/>
+      <IonAlert
+        isOpen={!!error}
+        message={error}
+        buttons={[
+          {
+            text: "OK",
+            handler: () => {
+              setError(undefined);
+            },
+          },
+        ]}
+      />
+      <ReturnToolbar title={"Pagar com cartão de Crédito"} />
       <IonContent>
         <IonGrid>
           <IonRow>
