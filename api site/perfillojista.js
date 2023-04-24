@@ -153,4 +153,8 @@ const taxas = {
   });
 
   btnAtualizar.addEventListener('click', atualizarTabela);
-  
+
+module.exports = {
+    exibirTaxas,
+    
+}
