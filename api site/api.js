@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const axios = require('axios');
 const app = express();
 const { verificarPagamento } = require('./boleto.js');
 const recarga = require('./recarga.js');
@@ -10,6 +9,7 @@ const bodyParser = require("body-parser");
 let users = require('./users.json');
 const {validarContaBancaria} = require('./transferencia.js');
 const {simularTransferencia} = require('./transferencia.js');
+const { taxas, exibirTaxas } = require('./perfillojista.js');
 
 
 app.use(bodyParser.json());
@@ -156,4 +156,14 @@ app.route('/api').get((req, res) => res.json({
     res.json({ isValid: isValid });
   });
   
+  app.get('/taxas', (req, res) => {
+    const taxas = exibirTaxas();
+    res.json(taxas);
+  });
+  
+  app.get('/beneficios/:perfil', (req, res) => {
+    const perfil = req.params.perfil;
+    const beneficios = exibirBeneficios(perfil);
+    res.send(beneficios);
+  });
   
