@@ -29,10 +29,11 @@ import OpcoesBoleto from "./pages/boletoPages/OpcoesBoleto";
 import CartaoBoleto from "./pages/boletoPages/CartaoBoleto";
 import UserConfig from "./pages/userPages/UserConfig";
 import Recarga from "./pages/recargaPages/Recarga";
+
 import Home from './pages/Home';
 import Login from './pages/Login';
-import AbrirConta from './pages/AbrirConta';
-import Comecar from './pages/Comecar';
+import AbrirConta from './pages/cadrastoPages/AbrirConta';
+import Comecar from '../pages/cadastroPages/Comecar';
 
 
 
