@@ -13,6 +13,7 @@ body {
      justify-content: center;
      align-items: center;
      background: #5578fa;
+
 }
 
 .container {
@@ -122,8 +123,9 @@ body {
 
  .input-box input::placeholder {
     color: #000000be;
+    
  }
-
+ 
  .gender-groups {
     display: flex;
     justify-content: space-between;
