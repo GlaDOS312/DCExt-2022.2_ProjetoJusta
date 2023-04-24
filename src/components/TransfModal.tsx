@@ -2,20 +2,13 @@ import React, { useState, useRef } from "react";
 import {
   IonButtons,
   IonButton,
-  IonHeader,
-  IonContent,
   IonToolbar,
-  IonTitle,
-  IonPage,
   IonItem,
   IonInput,
-  useIonModal,
   IonCard,
   IonCardContent,
-  IonCardHeader,
   IonLabel,
 } from "@ionic/react";
-import { OverlayEventDetail } from "@ionic/core/components";
 
 const TransfModal = ({
   onDismiss,
