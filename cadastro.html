@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Cadastro de Conta</title>
+</head>
+<body>
+	<h1>Cadastro</h1>
+	<form>
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="nome" required><br><br>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required><br><br>
+
+		<label for="telefone">Telefone:</label>
+		<input type="tel" id="telefone" name="telefone" required><br><br>
+
+        <label for="cnpj">CNPJ:</label>
+		<input type="text" id="cnpj" name="cnpj" required><br><br>
+
+		<label for="data-nascimento">Data de Nascimento:</label>
+		<input type="date" id="data-nascimento" name="data-nascimento" required><br><br>
+
+		<label for="endereco-rua">Rua:</label>
+		<input type="text" id="endereco-rua" name="endereco-rua" required><br><br>
+
+		<label for="endereco-bairro">Bairro:</label>
+		<input type="text" id="endereco-bairro" name="endereco-bairro" required><br><br>
+
+		<label for="endereco-cidade">Cidade:</label>
+		<input type="text" id="endereco-cidade" name="endereco-cidade" required><br><br>
+
+		<label for="endereco-estado">Estado:</label>
+		<input type="text" id="endereco-estado" name="endereco-estado" required><br><br>
+
+		<label for="endereco-cep">CEP:</label>
+		<input type="text" id="endereco-cep" name="endereco-cep" required><br><br>
+
+		<label for="senha">Senha:</label>
+		<input type="password" id="senha" name="senha" required><br><br>
+
+        <input type="submit" value="Enviar" onclick="return validarFormulario()">
+	</form>
+	
+	<script type="text/javascript" src="cadastro.js"></script>
+</body>
+</html>
