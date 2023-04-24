@@ -11,21 +11,40 @@ import {
   IonButton,
   IonSelect,
   IonSelectOption,
+  useIonModal,
 } from "@ionic/react";
 
 import { useRef, useState } from "react";
+import { OverlayEventDetail } from "@ionic/core/components";
 
 import ReturnToolbar from "../../components/returnToolbar";
+import TransfModal from "../../components/TransfModal";
 
 const TransfBanc: React.FC = () => {
 
   const [error, setError] = useState<string>();
+  
+  const [present, dismiss] = useIonModal(TransfModal, {
+    onDismiss: (data: string, role: string) => dismiss(data, role),
+  });
+  const [banco, setBanco] = useState<string>();
 
   const valorRef = useRef<HTMLIonInputElement>(null);
   const nomeRef = useRef<HTMLIonInputElement>(null);
   const cpfcnpjRef = useRef<HTMLIonInputElement>(null);
   const agenciaeRef = useRef<HTMLIonInputElement>(null);
   const contaRef = useRef<HTMLIonInputElement>(null);
+
+
+  function openModal() {
+    present({
+      onWillDismiss: (ev: CustomEvent<OverlayEventDetail>) => {
+        if (ev.detail.role === "confirm") {
+          setBanco(ev.detail.data);
+        }
+      },
+    });
+  }
 
   const Transferir = () => {
     
@@ -45,6 +64,16 @@ const TransfBanc: React.FC = () => {
     }
   };
 
+  const inputChangeHandler = (event: CustomEvent) => {
+    let banco = event.detail.value;
+
+    if (banco !== "OUTROS"){
+      setBanco(banco);
+    } else {
+      openModal();
+    }
+  };
+
   return (
     <IonPage>
       <IonAlert
@@ -59,9 +88,10 @@ const TransfBanc: React.FC = () => {
           },
         ]}
       />
+      
       <ReturnToolbar title={"Transferência Bancária"} />
       <IonContent>
-        <IonGrid className="ion-text-center ion-margin">
+        <IonGrid>
           <IonRow>
             <IonCol>
               <IonItem>
@@ -82,23 +112,27 @@ const TransfBanc: React.FC = () => {
             <IonCol>
               <IonItem>
                 <IonSelect
-                  aria-label="Banco"
+                  onIonChange={inputChangeHandler}
                   interface="popover"
                   placeholder="Selecionar Banco"
                 >
                   <IonSelectOption value="BRADESCO">BRADESCO</IonSelectOption>
-                  <IonSelectOption value="BANCO DE BRASIL">BANCO DO BRASIL</IonSelectOption>
-                  <IonSelectOption value="CAIXA ECÔNOMICA FEDERAL">CAIXA ECÔNOMICA FEDERAL</IonSelectOption>
+                  <IonSelectOption value="BANCO DO BRASIL">
+                    BANCO DO BRASIL
+                  </IonSelectOption>
+                  <IonSelectOption value="CAIXA ECÔNOMICA FEDERAL">
+                    CAIXA ECÔNOMICA FEDERAL
+                  </IonSelectOption>
                   <IonSelectOption value="ITAÚ">ITAÚ</IonSelectOption>
                   <IonSelectOption value="SANTANDER">SANTANDER</IonSelectOption>
+                  <IonSelectOption value="OUTROS">Outros</IonSelectOption>
                 </IonSelect>
               </IonItem>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
+                <p className="white">
+                  {(banco != "BRADESCO" && banco != "BANCO DO BRASIL" && banco != "CAIXA ECÔNOMICA FEDERAL" && banco!="ITAÚ" && banco!= "SANTANDER") ? (banco) : ""}
+                </p>
               <IonItem>
-                <IonLabel position="floating">Agência do Receptor</IonLabel>
+                <IonLabel position="floating">Agência</IonLabel>
                 <IonInput ref={valorRef} type="text"></IonInput>
               </IonItem>
             </IonCol>
@@ -106,7 +140,7 @@ const TransfBanc: React.FC = () => {
           <IonRow>
             <IonCol>
               <IonItem>
-                <IonLabel position="floating">Conta do Receptor</IonLabel>
+                <IonLabel position="floating">Conta</IonLabel>
                 <IonInput ref={valorRef} type="text"></IonInput>
               </IonItem>
             </IonCol>
@@ -115,14 +149,22 @@ const TransfBanc: React.FC = () => {
             <IonCol>
               <IonItem>
                 <IonLabel position="floating">Valor da Transferência</IonLabel>
-                <IonInput ref={valorRef} type="number" placeholder="R$ 0,00"></IonInput>
+                <IonInput
+                  ref={valorRef}
+                  type="number"
+                  placeholder="R$ 0,00"
+                ></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonButton className="btn" fill="clear" onClick={Transferir}>
+                Continuar
+              </IonButton>
+            </IonCol>
+          </IonRow>
         </IonGrid>
-        <IonButton onClick={Transferir} fill="outline">
-          Continuar
-        </IonButton>
       </IonContent>
     </IonPage>
   );
