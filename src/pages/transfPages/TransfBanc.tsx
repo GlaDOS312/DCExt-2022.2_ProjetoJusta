@@ -89,7 +89,7 @@ const TransfBanc: React.FC = () => {
         ]}
       />
       
-      <ReturnToolbar title={"Transferência Bancária"} />
+      <ReturnToolbar title={"Transferência Bancária"} route={"./TelaPrincipal"}/>
       <IonContent>
         <IonGrid>
           <IonRow>
