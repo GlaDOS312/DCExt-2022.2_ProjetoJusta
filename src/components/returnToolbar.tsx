@@ -1,9 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { IonButton, IonHeader, IonIcon, IonTitle, IonToolbar } from "@ionic/react";
-import { returnUpBackOutline} from "ionicons/icons";
-import "../theme/app.css";
-
+import {arrowBackOutline} from "ionicons/icons";
 
 
 const ReturnToolbar: React.FC<{
@@ -16,7 +14,7 @@ const ReturnToolbar: React.FC<{
         <IonToolbar>
           <IonTitle className="title">{props.title}</IonTitle>
             <IonButton onClick={() => history.push("/TelaPrincipal")} fill="clear">
-              <IonIcon icon={returnUpBackOutline}></IonIcon>
+              <IonIcon icon={arrowBackOutline}></IonIcon>
             </IonButton>
         </IonToolbar>
       </IonHeader>
