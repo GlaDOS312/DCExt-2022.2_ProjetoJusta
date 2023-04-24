@@ -55,9 +55,9 @@ const inputChangeHandler = (event: CustomEvent) => {
           },
         ]}
       />
-      <ReturnToolbar title={"Transferência"} />
+      <ReturnToolbar title={"Transferência"} route={"./AreaPix"}/>
       <IonContent>
-        <IonGrid className="ion-text-center ion-margin">
+        <IonGrid>
           <IonRow>
             <IonCol>
               <IonItem>
