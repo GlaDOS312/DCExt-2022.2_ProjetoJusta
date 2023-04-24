@@ -15,7 +15,7 @@ import ReturnToolbar from "../../components/returnToolbar";
 const OpcoesBoleto: React.FC = () => {
   return (
     <IonPage>
-      <ReturnToolbar title={"Pagar ou Receber com Boleto"} />
+      <ReturnToolbar title={"Pagar ou Receber com Boleto"} route={"/TelaPrincipal"} />
       <IonContent>
         <IonList>
           <Action
