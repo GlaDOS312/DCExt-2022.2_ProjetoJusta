@@ -100,10 +100,11 @@ ion-modal {
   --height: auto;
 }
 
-.saldo{
-    color:antiquewhite;
+.white{
+    color:aliceblue;
     padding: 2%;
 }
+
 .block {
   width: 100%;
   display: flex;
@@ -124,5 +125,13 @@ ion-modal {
 .ion-list{
   height: 100%;
 }
+
+.btn {
+  font-weight: 600;
+  color: #183b65;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background-image: linear-gradient(180deg,#ffffff,#bdbdd0);            
+}             
   
   
