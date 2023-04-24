@@ -21,15 +21,17 @@ import ReturnToolbar from "../../components/returnToolbar";
 const Recarga: React.FC = () => {
   const [operadora, setOperadora] = useState<string>();
   const [error, setError] = useState<string>();
+
   const telefoneRef = useRef<HTMLIonInputElement>(null);
   const valorRef = useRef<HTMLIonInputElement>(null);
 
   
   const recarga = () => {
+
     let telefone = telefoneRef.current!.value;
     let valor = telefoneRef.current!.value;
 
-    if (!operadora|| !valor || !telefone) {
+    if (!operadora || !valor || !telefone) {
       setError("Preencher corretamente antes de continuar");
       return;
     } else if (+valor < 5) {
@@ -38,9 +40,9 @@ const Recarga: React.FC = () => {
     }  
   };
 
-  const inputChangeHandler = (event:CustomEvent) => {
-    setOperadora(event.detail.value);
-  }
+const inputChangeHandler = (event:CustomEvent) => {
+  setOperadora(event.detail.value);
+}
 
 
 
@@ -63,24 +65,26 @@ const Recarga: React.FC = () => {
         <IonGrid className="ion-text-center ion-margin">
           <IonRow>
             <IonCol>
-              <IonSelect
-                onIonChange={inputChangeHandler}
-                aria-label="Operadora"
-                interface="popover"
-                placeholder="Selecionar Operadora"
-              >
-                <IonSelectOption value="TIM">TIM</IonSelectOption>
-                <IonSelectOption value="CLARO">CLARO</IonSelectOption>
-                <IonSelectOption value="OI">OI</IonSelectOption>
-                <IonSelectOption value="VIVO">VIVO</IonSelectOption>
-              </IonSelect>
+              <IonItem>
+                <IonSelect
+                  onIonChange={inputChangeHandler}
+                  aria-label="Operadora"
+                  interface="popover"
+                  placeholder="Selecionar Operadora"
+                >
+                  <IonSelectOption value="TIM">TIM</IonSelectOption>
+                  <IonSelectOption value="CLARO">CLARO</IonSelectOption>
+                  <IonSelectOption value="OI">OI</IonSelectOption>
+                  <IonSelectOption value="VIVO">VIVO</IonSelectOption>
+                </IonSelect>
+              </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
               <IonItem>
                 <IonLabel position="floating">
-                  Número de Telefone com DDD
+                  Número de Telefone (com DDD)
                 </IonLabel>
                 <IonInput ref={telefoneRef} type="number"></IonInput>
               </IonItem>
@@ -90,14 +94,22 @@ const Recarga: React.FC = () => {
             <IonCol>
               <IonItem>
                 <IonLabel position="floating">Valor da Recarga</IonLabel>
-                <IonInput ref={valorRef} type="number"></IonInput>
+                <IonInput
+                  ref={valorRef}
+                  placeholder="R$ 0,00"
+                  type="number"
+                ></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonButton className="btn" fill="clear" onClick={recarga}>
+                Continuar
+              </IonButton>
+            </IonCol>
+          </IonRow>
         </IonGrid>
-        <IonButton onClick={recarga} fill="outline">
-          Continuar
-        </IonButton>
       </IonContent>
     </IonPage>
   );
