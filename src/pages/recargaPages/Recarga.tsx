@@ -60,9 +60,9 @@ const inputChangeHandler = (event:CustomEvent) => {
           },
         ]}
       />
-      <ReturnToolbar title={"Recarga de Celular"} />
+      <ReturnToolbar title={"Recarga de Celular"} route={"./AreaPix"}/>
       <IonContent>
-        <IonGrid className="ion-text-center ion-margin">
+        <IonGrid>
           <IonRow>
             <IonCol>
               <IonItem>
