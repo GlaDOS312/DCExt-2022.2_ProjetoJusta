@@ -9,28 +9,11 @@ import { useHistory } from "react-router";
 import Justalogo from "./justalogo.jpeg";
 import { chatbubble } from 'ionicons/icons';
 
-
 const Home: React.FC= () => {
   const history = useHistory();
   return (
-
-    <IonPage>
-
-      {/*<IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-  </IonHeader>*/}
-      
+    <IonPage> 
       <IonContent>
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <Route path="/login" component={Login} />
-            <Route path="/abrirconta" component={AbrirConta} />
-            <Redirect exact from="/" to="/home" />
-          </IonRouterOutlet>
-        </IonReactRouter>
-
         <div className="container">
           <img className ="img" src = {Justalogo} alt="logo Justa"/>
           <IonButton  shape="round" className="botaobranco" onClick={() => history.push('/login')}>Login</IonButton>
@@ -48,5 +31,4 @@ const Home: React.FC= () => {
   
   );
 };
-
 export default Home;
