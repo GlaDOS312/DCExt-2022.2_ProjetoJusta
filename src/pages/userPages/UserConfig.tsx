@@ -8,7 +8,7 @@ import ReturnToolbar from "../../components/returnToolbar";
 const UserConfig: React.FC = () => {
   return (
     <IonPage>
-      <ReturnToolbar title={"Configurações do Usuário"} />
+      <ReturnToolbar title={"Configurações do Usuário"} route={"./TelaPrincipal"}/>
       <IonContent>
         <IonList>
           <Action
