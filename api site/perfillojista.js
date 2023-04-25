@@ -85,16 +85,16 @@ function exibirTaxas() {
     return;
   } else if (faturamento > 10000 && perfil == "bronze") {
     alert("O faturamento é acima do perfil selecionado!");
-    return;
+    return taxas.bronze;
   } else if (faturamento > 29000 && perfil == "prata") {
     alert("O faturamento é acima do perfil selecionado!");
-    return;
+    return taxas["prata"];
   } else if (perfil == "prata" && faturamento < 10000) {
      alert("O valor está abaixo do perfil selecionado!");
-     return;
+     return taxas["ouro"];
   } else if (perfil == "ouro" && faturamento < 30000) {
     alert("O valor está abaixo do perfil selecionado!");
-    return;
+    return ;
   }
 
   var taxas = obterTaxas(perfil);
@@ -145,7 +145,4 @@ perfil.addEventListener('change', () => {
 });
 
 btnAtualizar.addEventListener('click', atualizarTabela);
-export default {
-  taxas,
-  exibirTaxas,
-};
+
