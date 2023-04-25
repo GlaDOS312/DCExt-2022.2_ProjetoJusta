@@ -1,74 +1,44 @@
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-
-const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
-const document = dom.window.document;
-
 let saldo = 5000;
 let valorTransferencia = 10000;
 
-function simularTransferencia() {
-if (bancoReceptor === "outros") {
-    document.getElementById("outros-bancos").style.display = "block";
-    bancoReceptor = document.getElementById("outros-banco-receptor").value;
-  } else {
-    document.getElementById("outros-bancos").style.display = "none";
-  }
-  
-    //form
-    var nomeReceptor = document.getElementById("nome-receptor").value;
-    var cpfCnpjReceptor = document.getElementById("cpf-cnpj-receptor").value;
-    var bancoReceptor = document.getElementById("banco-receptor").value;
-    var agenciaReceptor = document.getElementById("agencia-receptor").value;
-    var contaReceptor = document.getElementById("conta-receptor").value;
-    var valorTransferencia = document.getElementById("valor-transferencia").value;
-
-    if (valorTransferencia > saldo) {
-        alert("Saldo insuficiente para realizar a transferência!");
-        return;
-      }
-  
-    if (nomeReceptor === "" || cpfCnpjReceptor === "" || bancoReceptor === "" || agenciaReceptor === "" || contaReceptor === "" || valorTransferencia === "") {
-      document.getElementById("resultado-transferencia").innerHTML = "Por favor, preencha todos os campos.";
-      return;
-    }
-
+function simularTransferencia(nomeReceptor, cpfCnpjReceptor, bancoReceptor, agenciaReceptor, contaReceptor, valorTransferencia) {
   if (bancoReceptor === "outros") {
-    document.getElementById("outros-bancos").style.display = "block";
-    bancoReceptor = document.getElementById("outros-banco-receptor").value;
+    bancoReceptor = "outros-banco-receptor";
+  }
+
+  if (valorTransferencia > saldo) {
+    console.log("Saldo insuficiente para realizar a transferência!");
+    return false;
+  }
+
+  if (nomeReceptor === "" || cpfCnpjReceptor === "" || bancoReceptor === "" || agenciaReceptor === "" || contaReceptor === "" || valorTransferencia === "") {
+    console.log("Por favor, preencha todos os campos.");
+    return false;
+  }
+
+  if (!validarContaBancaria(agenciaReceptor, contaReceptor)) {
+    console.log("Conta bancária inválida.");
+    return false;
+  }
+
+
+  // Objeto date pra ver hora
+  var agora = new Date();
+  var horaAtual = agora.getHours();
+  var minutoAtual = agora.getMinutes();
+
+  // Verificar se ted ou doc
+  var tipoTransferencia;
+  if (horaAtual >= 08 && horaAtual < 16 && minutoAtual <= 59) {
+    tipoTransferencia = "TED";
   } else {
-
-    document.getElementById("outros-bancos").style.display = "none";
+    tipoTransferencia = "DOC";
   }
-  
-    
-    if (!validarContaBancaria(agenciaReceptor, contaReceptor)) {
-      document.getElementById("resultado-transferencia").innerHTML = "Conta bancária inválida.";
-      return;
-    }
-  
-    // Objeto date pra ver hora
-    var agora = new Date();
-    var horaAtual = agora.getHours();
-    var minutoAtual = agora.getMinutes();
-  
-    // Verificar se ted ou doc
-    var tipoTransferencia;
-    if (horaAtual >= 08 && horaAtual < 16 && minutoAtual <= 59) {
-      tipoTransferencia = "TED";
-    } else {
-      tipoTransferencia = "DOC";
-    }
-  
 
-    document.getElementById("resultado-transferencia").innerHTML = "Transferência de R$" + valorTransferencia + " para " + nomeReceptor + " (" + cpfCnpjReceptor + ") no banco " + bancoReceptor + " agência " + agenciaReceptor + " conta " + contaReceptor + ". Tipo de transferência: " + tipoTransferencia + ".";
-    saldo -= valorTransferencia;
+  console.log("Transferência de R$" + valorTransferencia + " para " + nomeReceptor + " (" + cpfCnpjReceptor + ") no banco " + bancoReceptor + " agência " + agenciaReceptor + " conta " + contaReceptor + ". Tipo de transferência: " + tipoTransferencia + ".");
+  saldo -= valorTransferencia;
+}
 
-    
-
-
-  }
-  
   function validarContaBancaria(agencia, conta) {
 
     if (isNaN(agencia) || isNaN(conta)) {

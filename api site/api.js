@@ -7,8 +7,7 @@ const recarga = require('./recarga.js');
 const { pagarBoleto } = require('./boletocard.js');
 const bodyParser = require("body-parser");
 let users = require('./users.json');
-const {validarContaBancaria} = require('./transferencia.js');
-const {simularTransferencia} = require('./transferencia.js');
+const simulador = require('./transferencia.js');
 const { exibirTaxas } = require('./perfillojista.js');
 
 
@@ -143,23 +142,25 @@ app.route('/api').get((req, res) => res.json({
     }
 });
 
-  app.post('/simular-transferencia', (req, res) => {
-    const { nomeReceptor, cpfCnpjReceptor, bancoReceptor, agenciaReceptor, contaReceptor, valorTransferencia } = req.body;
-  
-    const resultadoTransferencia = simularTransferencia(nomeReceptor, cpfCnpjReceptor, bancoReceptor, agenciaReceptor, contaReceptor, valorTransferencia);
-  
-    res.json(resultadoTransferencia);
-  });
-  
-  app.post('/validar-conta-bancaria', (req, res) => {
-    const agencia = req.body.agencia;
-    const conta = req.body.conta;
-  
-    const isValid = validarContaBancaria(agencia, conta);
-  
-    res.json({ isValid: isValid });
-  });
-  
+app.post('/transferencia', function(req, res) {
+  const { nomeReceptor, cpfCnpjReceptor, bancoReceptor, agenciaReceptor, contaReceptor, valorTransferencia } = req.body;
+
+  // Use a função de validação antes de realizar a transferência
+  if (!simulador.validarContaBancaria(agenciaReceptor, contaReceptor)) {
+    return res.status(400).send('Conta bancária inválida.');
+  }
+
+  // Use a função de simulação para realizar a transferência
+  const transferencia = simulador.simularTransferencia(nomeReceptor, cpfCnpjReceptor, bancoReceptor, agenciaReceptor, contaReceptor, valorTransferencia);
+
+  // Verifique se a transferência foi realizada com sucesso
+  if (!transferencia) {
+    return res.status(400).send('Não foi possível realizar a transferência.');
+  }
+
+  return res.send('Transferência realizada com sucesso!');
+});
+
   app.get('/taxas', (req, res) => {
     const taxas = exibirTaxas();
     res.send(JSON.stringify(taxas));
@@ -170,4 +171,4 @@ app.route('/api').get((req, res) => res.json({
     const beneficios = exibirBeneficios(perfil);
     res.send(beneficios);
   });
-  
+
