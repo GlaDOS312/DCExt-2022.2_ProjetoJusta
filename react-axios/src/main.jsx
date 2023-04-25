@@ -4,7 +4,7 @@ import App from './App.jsx'
 import {createBrowserRoute, RouterProvider, Route} from 'react-router-dom'
 import './index.css'
 import axios from 'axios';
-import { response } from 'express'
+
 
 const router = createBrowserRoute([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRoute([
   },
 ])
 
-axios.get('https://github.com/GlaDOS312/DCExt-2022.2_ProjetoJusta/tree/Back-End/api%20site')
+axios.get(' http://localhost:5500/api')
     .then(response => {
       console.log(response.data);
     })
