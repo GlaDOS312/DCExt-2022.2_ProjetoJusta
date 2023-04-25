@@ -26,7 +26,7 @@ const AbrirConta: React.FC = () => {
 
           <IonButton
             shape="round"
-            className="botaopreto"
+            className="botaoazul"
             onClick={() => history.push("/login")}
           >
             Concluir cadastro
