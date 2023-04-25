@@ -1,27 +1,19 @@
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-
-const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
-const document = dom.window.document;
-
-  function verificarPagamento() {
-    var numeroBoleto = document.getElementById("numeroBoleto").value;
-    var dataVencimento = new Date(document.getElementById("dataVencimento").value);
-    var valorBoleto = parseFloat(document.getElementById("valorBoleto").value);
-
-    var hoje = new Date();
-    
-    if (hoje.getTime() > dataVencimento.getTime()) {
-      alert("Boleto vencido!");
+function verificarPagamento(numeroBoleto, dataVencimento, valorBoleto) {
+  var hoje = new Date();
+  var vencimento = new Date(dataVencimento);
+  
+  if (hoje.getTime() > vencimento.getTime()) {
+    return "Boleto vencido!";
+  } else {
+    var saldo = 1000.00; // saldo fictício
+    if (valorBoleto > saldo) {
+      return "Saldo insuficiente!";
     } else {
-      var saldo = 1000.00; // saldo fictício
-      if (valorBoleto > saldo) {
-        alert("Saldo insuficiente!");
-      } else {
-        alert("Boleto pago com sucesso!");
-      }
+      return "Boleto pago com sucesso!";
     }
   }
+}
+
 module.exports = {
   verificarPagamento : verificarPagamento
 }

@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 let users = require('./users.json');
 const {validarContaBancaria} = require('./transferencia.js');
 const {simularTransferencia} = require('./transferencia.js');
-const { taxas, exibirTaxas } = require('./perfillojista.js');
+const { exibirTaxas } = require('./perfillojista.js');
 
 
 app.use(bodyParser.json());
@@ -162,8 +162,8 @@ app.route('/api').get((req, res) => res.json({
   
   app.get('/taxas', (req, res) => {
     const taxas = exibirTaxas();
-    res.json(taxas);
-  });
+    res.send(JSON.stringify(taxas));
+  });  
   
   app.get('/beneficios/:perfil', (req, res) => {
     const perfil = req.params.perfil;
