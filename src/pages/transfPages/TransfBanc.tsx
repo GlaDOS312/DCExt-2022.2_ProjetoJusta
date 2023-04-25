@@ -19,7 +19,6 @@ import { OverlayEventDetail } from "@ionic/core/components";
 
 import ReturnToolbar from "../../components/returnToolbar";
 import TransfModal from "../../components/TransfModal";
-import StdInput from "../../components/StdInput";
 
 const TransfBanc: React.FC = () => {
 
