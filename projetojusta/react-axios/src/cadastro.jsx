@@ -3,10 +3,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 // falta o css
 
-const PageLogin: React.FC = () => {
+function formulario(){
 
   const url = "http://localhost:5500/api";
-  const { name } = useParams<{ name: string; }>();
   const [cnpj, setCnpj] = useState('');
   const [senha, setSenha] = useState('')
   const [nome, setNome] = useState('')
