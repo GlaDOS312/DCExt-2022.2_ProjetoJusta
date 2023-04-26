@@ -24,13 +24,23 @@ fs.readFile("users.json", function(err, data){ //PUXA DADOS DOS USUÁRIOS DO SIT
 })
 
 
+let userLogado = {
+  nome: '',
+  cnpj: '',
+  sobrenome: '',
+  email: '',
+  senha: '',
+  saldo:'',
+  agencia:'',
+  conta:''
+}; 
 
 
 app.listen(5500, () => {
     console.log('servidor online na porta http://localhost:5500/api');
 })  
 app.route('/api').get((req, res) => res.json({
-  users
+  users, userLogado
 }))
 
   
@@ -70,16 +80,10 @@ app.route('/api').get((req, res) => res.json({
   
   
   app.route('/api/:id').put((req, res) => {
-    const userId = req.params.id;
-  
-    const user = user.find(user => Number(user.id) === Number(userId));
-  
-    if (!user) {
-      return res.json('User not found!')
-    }
+
   
     const updatedUser = {
-      ...user,
+     
       nome: req.body.nomeCad,
       cnpj: req.body.cnpjCad,
       sobrenome: req.body.sobrenomeCad,
@@ -93,12 +97,8 @@ app.route('/api').get((req, res) => res.json({
       operadora: req.body.operadoraCad
     }
   
-    users = users.map(user => {
-      if (Number(user.id) === Number(userId)) {
-        user = updatedUser;
-      }
-      return user;
-    })
+    userLogado = updatedUser;
+ 
   
     res.json("Updated user");
   })
