@@ -9,6 +9,11 @@ const bodyParser = require("body-parser");
 let users = require('./users.json');
 const simulador = require('./transferencia.js');
 const { exibirTaxas } = require('./perfillojista.js');
+const relatorio = require('./relatorio');
+
+// resto do código
+
+
 
 
 app.use(bodyParser.json());
@@ -171,4 +176,10 @@ app.post('/transferencia', function(req, res) {
     const beneficios = exibirBeneficios(perfil);
     res.send(beneficios);
   });
+
+  app.get('/relatorio', (req, res) => {
+    const relatorioGerado = relatorio.gerarRelatorio();
+    res.send(relatorioGerado);
+  });
+  
 
