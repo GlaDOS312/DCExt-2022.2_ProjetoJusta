@@ -12,6 +12,18 @@ import '../theme/Estilo.css';
 
 const Comecar: React.FC<RouteComponentProps> = () => {
   const history = useHistory();
+  
+  const nomeRef = useRef<HTMLIonInputElement>(null);
+  
+  const abrirConta = () => {
+    nome = nomeRef.current!.value
+    if (!nome) {
+      alert("Preencher Corretamente Antes de Continuar");
+      return;
+    }
+    history.push('/telaprincipal')
+  }
+  
   return (
     <div >
     <IonPage>
@@ -29,7 +41,7 @@ const Comecar: React.FC<RouteComponentProps> = () => {
         
         <IonCol>
           <IonItem className ="login">
-            <IonInput label="Nome completo"  labelPlacement="stacked" placeholder="Digite seu nome completo"></IonInput>
+            <IonInput label="Nome completo"  labelPlacement="stacked" placeholder="Digite seu nome completo" ref={nomeRef}></IonInput>
           </IonItem>
         </IonCol>
       
@@ -59,27 +71,27 @@ const Comecar: React.FC<RouteComponentProps> = () => {
 
         <IonCol>
           <IonItem>
-            <IonInput  type="password" labelPlacement="stacked" label="Rua" placeholder="Digite o nome de sua rua"></IonInput>
+            <IonInput  labelPlacement="stacked" label="Rua" placeholder="Digite o nome de sua rua"></IonInput>
           </IonItem>
         </IonCol>
 
       
         <IonCol>
           <IonItem>
-            <IonInput  type="password" labelPlacement="stacked" label="Bairro" placeholder="Digite o nome de seu bairro"></IonInput>
+            <IonInput  labelPlacement="stacked" label="Bairro" placeholder="Digite o nome de seu bairro"></IonInput>
           </IonItem>
         </IonCol>
 
         <IonCol>
           <IonItem>
-            <IonInput  type="password" labelPlacement="stacked" label="Cidade" placeholder="Digite o nome de sua cidade"></IonInput>
+            <IonInput  labelPlacement="stacked" label="Cidade" placeholder="Digite o nome de sua cidade"></IonInput>
           </IonItem>
         </IonCol>
 
 
         <IonCol>
           <IonItem>
-            <IonInput  type="password" labelPlacement="stacked" label="Estado" placeholder="Digite o nome de seu Estado"></IonInput>
+            <IonInput  labelPlacement="stacked" label="Estado" placeholder="Digite o nome de seu Estado"></IonInput>
           </IonItem>
         </IonCol>
 
@@ -95,18 +107,9 @@ const Comecar: React.FC<RouteComponentProps> = () => {
             <IonInput label="Senha" type="password" labelPlacement="stacked" placeholder="Digite a sua senha"></IonInput>
           </IonItem>
         </IonCol>
-     
-
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <Route path="/telaprincipal" component={TelaPrincipal} />
-            <Redirect exact from="/" to="/login" />
-          </IonRouterOutlet>
-        </IonReactRouter>
 
 
-
-        <IonButton  shape="round" className="botao" onClick={() => history.push('/telaprincipal')}>Enviar</IonButton>
+        <IonButton  shape="round" className="botao" onClick={abrirConta}>Enviar</IonButton>
 
         </div>
       </IonContent>
