@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 // falta o css
 const url = "http://localhost:5500/api";
 
-const PageLogin: React.FC = () => {
+function login(){
 
   const [cnpj, setCnpj] = useState('');
   const [password, setPassword] = useState('');
@@ -93,4 +93,4 @@ const PageLogin: React.FC = () => {
   );
 }
 
-export default PageLogin;
+export default login;
