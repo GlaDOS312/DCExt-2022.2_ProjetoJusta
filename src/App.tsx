@@ -29,6 +29,7 @@ import OpcoesBoleto from "./pages/boletoPages/OpcoesBoleto";
 import CartaoBoleto from "./pages/boletoPages/CartaoBoleto";
 import UserConfig from "./pages/userPages/UserConfig";
 import Recarga from "./pages/recargaPages/Recarga";
+import Relatorio from "./pages/userPages/Relatorio";
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -52,6 +53,7 @@ const App: React.FC = () => {
           <Route path="/CartaoBoleto" component={CartaoBoleto} />
           <Route path="/UserConfig" component={UserConfig} />
           <Route path="/Recarga" component={Recarga} />
+          <Route path="/Relatorio" component={Relatorio}/>
           <Route path="/home" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/abrirconta" component={AbrirConta} />
