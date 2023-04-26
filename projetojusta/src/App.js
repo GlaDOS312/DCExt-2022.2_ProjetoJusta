@@ -1,23 +1,27 @@
-import React from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Reports from './pages/Reports';
-import Products from './pages/Products';
+import { useState } from 'react'; 
 
-function App() {
+import Navbar from "./Components/navbar/Navbar";
+import Sidebar from "./Components/sidebar/Sidebar";
+import Main from "./Components/main/Main";
+
+import './App.css';
+
+const App = () => {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const openSidebar = () => {
+    setSidebarOpen(true);
+  };
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/reports' component={Reports} />
-          <Route path='/products' component={Products} />
-        </Switch>
-      </Router>
-    </>
+    <div className="container">
+      <Navbar sidebarOpen={sidebarOpen} closeSidebar={openSidebar} />
+      <Main />
+      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
+    </div>
   );
 }
 
