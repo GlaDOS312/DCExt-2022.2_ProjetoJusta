@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ambient PIX</title>
+</head>
+<body>
+	<h1>PIX</h1>
+
+	<p>Selecione o tipo de chave:</p>
+	<select id="tipo-chave" onchange="exibirCampoChave()">
+		<option value="">Selecione um tipo de chave</option>
+		<option value="cpf_cnpj">CPF/CNPJ</option>
+		<option value="celular">Celular</option>
+		<option value="email">E-mail</option>
+		<option value="aleatoria">Chave Aleatória</option>
+	</select>
+
+	<div id="campo-chave" style="display:none">
+		<p>Digite a chave:</p>
+		<input type="text" id="valor-chave">
+		<button onclick="buscarDadosChave()">Buscar</button>
+	</div>
+
+	<div id="dados-chave" style="display:none">
+		<h2>Dados da chave selecionada:</h2>
+		<p><strong>Nome:</strong> <span id="nome"></span></p>
+		<p><strong>Banco:</strong> <span id="banco"></span></p>
+		<p><strong>Agência:</strong> <span id="agencia"></span></p>
+		<p><strong>Conta:</strong> <span id="conta"></span></p>
+		<p><strong>Saldo:</strong> <span id="saldo"></span></p>
+	</div>
+
+	<div id="transferencia" style="display:none">
+		<h2>Realizar transferência:</h2>
+		<label for="valor">Valor:</label>
+		<input type="number" id="valor" step="0.01"><br>
+		<button onclick="realizarTransferencia()">Confirmar</button>
+	</div>
+
+	<script src="pix.js"></script>
+</body>
+</html>
