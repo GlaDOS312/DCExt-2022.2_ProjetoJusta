@@ -29,37 +29,43 @@ const TransfBanc: React.FC = () => {
   });
 
   const [banco, setBanco] = useState<string>();
+  const [outro, setOutro] = useState(false);
+
   const valorRef = useRef<HTMLIonInputElement>(null);
   const nomeRef = useRef<HTMLIonInputElement>(null);
   const cpfcnpjRef = useRef<HTMLIonInputElement>(null);
   const agenciaRef = useRef<HTMLIonInputElement>(null);
   const contaRef = useRef<HTMLIonInputElement>(null);
-  
-  const confeirDados = () => {
-    if (!valorRef || !nomeRef || !cpfcnpjRef || !banco || !agenciaRef || !contaRef) {
+
+  const conferirDados = () => {
+    let nomeRec = nomeRef.current!.value;
+    let cadastro = cpfcnpjRef.current!.value;
+    let agencia = agenciaRef.current!.value;
+    let conta = contaRef.current!.value;
+    let valor = valorRef.current!.value;
+
+    if (!nomeRec || !cadastro || !banco || !agencia || !conta || !valor) {
       setError("Preencher corretamente antes de continuar");
       return;
-    } else if (+valorRef < 0.01) {
+    } else if (+valor < 0.01) {
       setError("Não é possível transferir esse valor");
       return;
     }
-    let valor = valorRef.current!.value;
-    let nome = nomeRef.current!.value;
-    let cpfCnpj = cpfcnpjRef.current!.value;
-    let agencia = agenciaRef.current!.value;
-    let conta = contaRef.current!.value;
-  }
-  
-  const inputChangeHandler = (event: CustomEvent) => {
+    console.log(nomeRec, cadastro, banco, agencia, conta, valor);
+  };
+
+  const selectHandler = (event: CustomEvent) => {
     let banco = event.detail.value;
-    
-    if (banco !== "OUTROS"){
+
+    if (banco !== "OUTROS") {
+      setOutro(false);
       setBanco(banco);
     } else {
       openModal();
+      setOutro(true);
     }
   };
-  
+
   function openModal() {
     present({
       onWillDismiss: (ev: CustomEvent<OverlayEventDetail>) => {
@@ -108,7 +114,7 @@ const TransfBanc: React.FC = () => {
             <IonCol>
               <IonItem>
                 <IonSelect
-                  onIonChange={inputChangeHandler}
+                  onIonChange={selectHandler}
                   interface="popover"
                   placeholder="Selecionar Banco"
                 >
@@ -124,8 +130,7 @@ const TransfBanc: React.FC = () => {
                   <IonSelectOption value="OUTROS">Outros</IonSelectOption>
                 </IonSelect>
               </IonItem>
-              {(banco != undefined & banco != "BRADESCO" && banco != "BANCO DO BRASIL" && banco != "CAIXA ECÔNOMICA FEDERAL" && banco != "ITAÚ" && banco != "SANTANDER") 
-               && <IonItem>{banco}</IonItem>}
+              {outro && <IonItem>{banco}</IonItem>}
               <IonItem>
                 <IonLabel position="floating">Agência</IonLabel>
                 <IonInput ref={agenciaRef} type="text"></IonInput>
