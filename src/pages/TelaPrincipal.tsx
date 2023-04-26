@@ -19,6 +19,11 @@ const TelaPrincipal: React.FC = () => {
         <SaldoVendas />
         <IonList className="ion-list">
           <Action
+          route={"/Relatorio"}
+          icon={calendarOutline}
+          name={"Relatório de Vendas"}
+          />
+          <Action
             route={"/TransfBanc"}
             icon={cashOutline}
             name={"Transferência Bancária"}
