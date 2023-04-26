@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-// falta o css
+
 const url = "http://localhost:5500/api";
 
-const PageLogin: React.FC = () => {
+function PageLogin() {
 
   const [cnpj, setCnpj] = useState('');
   const [password, setPassword] = useState('');
