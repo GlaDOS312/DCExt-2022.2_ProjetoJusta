@@ -22,6 +22,11 @@ ion-content::part(background) {
 
 
 
+.login{
+  background:#183b65;
+  
+}
+
 .icone{
     position: relative;
     color:white;
@@ -43,6 +48,39 @@ ion-content::part(background) {
     
   }   
   
+ .estilo{
+    text-align: center;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    background: #183b65;
+    color:white;
+    
+  }
+
+ .estilo .botao{
+      text-transform: capitalize ;
+      --background: white;
+      --background-hover: #9ce0be;
+      --background-activated: #88f4be;
+      --background-focused: #88f4be;
+    
+      --color: #183b65;;
+    
+     
+      --border-color: #183b65;
+      --border-style: solid;
+      --border-width: 1px;
+    
+   
+      --padding-top: 20px;
+      --padding-bottom: 20px;
+      text-align: center;
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+    }
+    
 
   
   .botaobranco {
