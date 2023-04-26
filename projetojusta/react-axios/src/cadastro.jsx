@@ -92,4 +92,4 @@ function formulario(){
   );
 }
 
-export default PageLogin;
+export default cadastro;
