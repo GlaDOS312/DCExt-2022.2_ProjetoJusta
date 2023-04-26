@@ -29,14 +29,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
     const btnRelatorio = document.getElementById("btnRelatorio");
     btnRelatorio.addEventListener('click', async function() {
-        const filtroDataInicial = document.getElementById('startdata').value;
-        const filtroDataFinal = document.getElementById('enddata').value;
+        const filtroDataInicial = document.getElementById('comecodata').value;
+        const filtroDataFinal = document.getElementById('fimdata').value;
   
-        let vendasFiltered = vendas;
+        let vendasFiltradas = vendas;
         if (filtroDataInicial !== "" && filtroDataFinal !== "") {
-            vendasFiltered = await filtrarVendas(vendas, filtroDataInicial, filtroDataFinal);
+            vendasFiltradas = await filtrarVendas(vendas, filtroDataInicial, filtroDataFinal);
         }
-        if (vendasFiltered.length === 0) {
+        if (vendasFiltradas.length === 0) {
           const relatorioElement = document.getElementById("relatorio");
           const relatorio = document.createElement("p");
           relatorio.textContent = "Não foram encontradas vendas para o período selecionado.";
@@ -44,23 +44,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
           relatorioElement.appendChild(relatorio);
   
       } else {
-          exibirVendas(vendasFiltered);
-          gerarRelatorio(vendasFiltered);
+          exibirVendas(vendasFiltradas);
+          gerarRelatorio(vendasFiltradas);
       }
   });
     
     async function filtrarVendas(vendas, filtroDataInicial, filtroDataFinal) {
-      const startdata = new data(filtroDataInicial).getTime();
-      const enddata = new data(filtroDataFinal).getTime();
+      const comecodata = new data(filtroDataInicial).getTime();
+      const fimdata = new data(filtroDataFinal).getTime();
   
-      const filteredvendas = [...vendas];
-      const filteredBydata = filteredvendas.filter(sale => {
-        const saledata = new data(sale.data).getTime();
-        return saledata >= startdata && saledata <= enddata;
+      const faturadasVendas = [...vendas];
+      const filtradoPordata = faturadasVendas.filter(venda => {
+        const datavendas = new data(venda.data).getTime();
+        return datavendas >= comecodata && datavendas <= fimdata;
     });
   
-    exibirVendas(filteredBydata);
-    return filteredBydata;
+    exibirVendas(filtradoPordata);
+    return filtradoPordata;
   }
   
     function gerarRelatorio(vendas) {
@@ -69,43 +69,43 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
         const creditCardFlag = document.getElementById("creditCardFlag").value;
         const debitCardFlag = document.getElementById("debitCardFlag").value;
-        const period = document.getElementById("period").value;
+        const periodo = document.getElementById("periodo").value;
     
-        let filteredvendas = vendas;
-        if (period !== "custom") {
-            const periodInMilliseconds = parseInt(period) * 24 * 60 * 60 * 1000;
+        let faturadasVendas = vendas;
+        if (periodo !== "customizado") {
+            const periodInMilliseconds = parseInt(periodo) * 24 * 60 * 60 * 1000;
             const today = new data().getTime();
             const periodStartdata = today - periodInMilliseconds;
-            filteredvendas = filteredvendas.filter(sale => {
-                const saledata = new data(sale.data).getTime();
-                return saledata >= periodStartdata && saledata <= today;
+            faturadasVendas = faturadasVendas.filter(venda => {
+                const datavendas = new data(venda.data).getTime();
+                return datavendas >= periodStartdata && datavendas <= today;
             });
         }
     
-        let creditCardvendas = filteredvendas.filter(sale => {
-            return sale.metodoPagamento === "credit" && sale.marca === creditCardFlag;
+        let creditCardvendas = faturadasVendas.filter(venda => {
+            return venda.metodoPagamento === "credit" && venda.marca === creditCardFlag;
         });
     
-        let debitCardvendas = filteredvendas.filter(sale => {
-            return sale.metodoPagamento === "debit" && sale.marca === debitCardFlag;
+        let debitCardvendas = faturadasVendas.filter(venda => {
+            return venda.metodoPagamento === "debit" && venda.marca === debitCardFlag;
         });
     
         let creditCardTotal = 0;
         let debitCardTotal = 0;
-        let creditCardTransactions = creditCardvendas.length;
-        let debitCardTransactions = debitCardvendas.length;
+        let transacaoCartaoCredito = creditCardvendas.length;
+        let transacaoCartaoDebito = debitCardvendas.length;
     
-        creditCardvendas.forEach(sale => {
-            creditCardTotal += sale.quantia;
+        creditCardvendas.forEach(venda => {
+            creditCardTotal += venda.quantia;
         });
     
-        debitCardvendas.forEach(sale => {
-            debitCardTotal += sale.quantia;
+        debitCardvendas.forEach(venda => {
+            debitCardTotal += venda.quantia;
         });
     
         relatorio.textContent = `Relatório de vendas:
-        Vendas no crédito (bandeira ${creditCardFlag}): ${creditCardTransactions} transações, totalizando R$ ${creditCardTotal.toFixed(2)}
-        Vendas no débito (bandeira ${debitCardFlag}): ${debitCardTransactions} transações, totalizando R$ ${debitCardTotal.toFixed(2)}
+        Vendas no crédito (bandeira ${creditCardFlag}): ${transacaoCartaoCredito} transações, totalizando R$ ${creditCardTotal.toFixed(2)}
+        Vendas no débito (bandeira ${debitCardFlag}): ${transacaoCartaoDebito} transações, totalizando R$ ${debitCardTotal.toFixed(2)}
         `;
         
         relatorioElement.innerHTML = "";
@@ -116,23 +116,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const vendasTableBody = document.getElementById("vendasTableBody");
       vendasTableBody.innerHTML = "";
     
-      vendas.forEach(sale => {
+      vendas.forEach(venda => {
         const row = document.createElement("tr");
     
         const dataCell = document.createElement("td");
-        dataCell.textContent = sale.data;
+        dataCell.textContent = venda.data;
         row.appendChild(dataCell);
     
         const paymentMethodCell = document.createElement("td");
-        paymentMethodCell.textContent = sale.metodoPagamento;
+        paymentMethodCell.textContent = venda.metodoPagamento;
         row.appendChild(paymentMethodCell);
     
         const amountCell = document.createElement("td");
-        amountCell.textContent = sale.quantia.toFixed(2);
+        amountCell.textContent = venda.quantia.toFixed(2);
         row.appendChild(amountCell);
     
         const brandCell = document.createElement("td");
-        brandCell.textContent = sale.marca;
+        brandCell.textContent = venda.marca;
         row.appendChild(brandCell);
     
         vendasTableBody.appendChild(row);
