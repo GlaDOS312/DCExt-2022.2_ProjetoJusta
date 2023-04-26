@@ -4,8 +4,9 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 
 const url = "http://localhost:5500/api";
+function PageLogin()
+function login(){
 
-function PageLogin() {
 
   const [cnpj, setCnpj] = useState('');
   const [password, setPassword] = useState('');
@@ -94,3 +95,5 @@ function PageLogin() {
 }
 
 export default PageLogin;
+
+
