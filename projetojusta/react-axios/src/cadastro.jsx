@@ -92,4 +92,4 @@ function formulario(){
   );
 }
 
-export default cadastro;
+export default formulario;
