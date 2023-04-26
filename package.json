@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "chart.js": "^4.2.1",
     "react-icons": "^4.8.0",
     "react-vis": "^1.11.12"
   }

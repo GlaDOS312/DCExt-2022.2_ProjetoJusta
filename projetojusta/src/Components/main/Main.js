@@ -1,4 +1,5 @@
-import hello from "../../Assets/hello.svg"
+import "./Main.css";
+import hello from "../../Assets/hello.svg";
 import Chart from "./charts/Chart";
 
 const Main = () => {
