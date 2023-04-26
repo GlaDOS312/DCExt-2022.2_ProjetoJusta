@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules
 node_modules/@react-icons/all-files/fa/FaEyeSlash.d.ts
 node_modules/@react-icons/all-files/fa/FaEyeSlash.esm.js
@@ -18830,3 +18831,28 @@ node_modules/proxy-from-env/LICENSE
 node_modules/proxy-from-env/package.json
 node_modules/proxy-from-env/README.md
 node_modules/proxy-from-env/test.js
+=======
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+>>>>>>> cb0c01948d68613f3bcb18c066a5c388f619ca35
