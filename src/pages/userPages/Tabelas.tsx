@@ -2,7 +2,12 @@ import { IonCol, IonGrid, IonHeader,IonLabel, IonRow } from "@ionic/react";
 import React from "react";
 
 type TableProps = {
-  data: { bandeira: string; total: number; transacoes:number}[];
+  data: {
+    date: string;
+    metodoPagamento: string;
+    quantia: number;
+    marca: string;
+  }[];
   title: string;
 };
 
@@ -15,15 +20,17 @@ const Table: React.FC<TableProps> = ({ data, title }) => {
         </IonLabel>
       </IonHeader>
       <IonRow>
-          <IonCol>BANDEIRA</IonCol>
-          <IonCol>TOTAL</IonCol>
-          <IonCol>TRANSAÇÕES</IonCol>
+        <IonCol>Data</IonCol>
+        <IonCol>Método</IonCol>
+        <IonCol>Quantia</IonCol>
+        <IonCol>Bandeira</IonCol>
       </IonRow>
       {data.map((item, index) => (
         <IonRow key={index}>
-          <IonCol>{item.bandeira}</IonCol>
-          <IonCol>{item.total}</IonCol>
-          <IonCol>{item.transacoes}</IonCol>
+          <IonCol>{item.date}</IonCol>
+          <IonCol>{item.metodoPagamento}</IonCol>
+          <IonCol>{item.quantia}</IonCol>
+          <IonCol>{item.marca}</IonCol>
         </IonRow>
       ))}
     </IonGrid>
@@ -31,15 +38,31 @@ const Table: React.FC<TableProps> = ({ data, title }) => {
 };
 
 const creditData = [
-  { bandeira: "Credit 1", total: 100, transacoes: 15 },
-  { bandeira: "Credit 2", total: 200, transacoes: 25 },
-  { bandeira: "Credit 3", total: 300, transacoes: 35 },
+  { date: "20-04-2023", metodoPagamento: "Crédito", quantia: 500.0, marca: "Visa" },
+  { date: "20-04-2023", metodoPagamento: "Crédito", quantia: 1000.0, marca: "Mastercard" },
+  { date: "19-04-2023", metodoPagamento: "Crédito", quantia: 800.0, marca: "American Express" },
+  { date: "17-04-2023", metodoPagamento: "Crédito", quantia: 600.0, marca: "Visa" },
+  { date: "13-04-2023", metodoPagamento: "Crédito", quantia: 200.0, marca: "Mastercard" },
+  { date: "11-04-2023", metodoPagamento: "Crédito", quantia: 750.0, marca: "American Express" },
+  { date: "09-04-2023", metodoPagamento: "Crédito", quantia: 1200.0, marca: "Visa" },
+  { date: "07-04-2023", metodoPagamento: "Crédito", quantia: 100.0, marca: "American Express" },
+  { date: "05-04-2023", metodoPagamento: "Crédito", quantia: 300.0, marca: "Mastercard" },
+  { date: "03-04-2023", metodoPagamento: "Crédito", quantia: 1800.0, marca: "American Express" },
+  { date: "01-04-2023", metodoPagamento: "Crédito", quantia: 700.0, marca: "Visa" },
 ];
 
 const debitData = [
-  { bandeira: "Debit 1", total: 50, transacoes: 23 },
-  { bandeira: "Debit 2", total: 75, transacoes: 33 },
-  { bandeira: "Debit 3", total: 100, transacoes: 43 },
+  { date: "19-04-2023", metodoPagamento: "debito", quantia: 300.0, marca: "Visa" },
+  { date: "18-04-2023", metodoPagamento: "debito", quantia: 250.0, marca: "Mastercard" },
+  { date: "16-04-2023", metodoPagamento: "debito", quantia: 700.0, marca: "Mastercard" },
+  { date: "14-04-2023", metodoPagamento: "debito", quantia: 1500.0, marca: "Visa" },
+  { date: "12-04-2023", metodoPagamento: "debito", quantia: 1000.0, marca: "Visa" },
+  { date: "10-04-2023", metodoPagamento: "debito", quantia: 350.0, marca: "Mastercard" },
+  { date: "08-04-2023", metodoPagamento: "debito", quantia: 900.0, marca: "Mastercard" },
+  { date: "06-04-2023", metodoPagamento: "debito", quantia: 2000.0, marca: "Visa" },
+  { date: "04-04-2023", metodoPagamento: "debito", quantia: 150.0, marca: "Visa" },
+  { date: "02-04-2023", metodoPagamento: "debito", quantia: 250.0, marca: "Mastercard" },
+  { date: "31-03-2023", metodoPagamento: "debito", quantia: 950.0, marca: "Mastercard" },
 ];
 
 export const creditTable = <Table data={creditData} title="Crédito"/>;
