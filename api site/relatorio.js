@@ -90,6 +90,6 @@ function gerarRelatorio(vendas) {
   
     return diasRestantes;
   }
-
+  main();
   module.exports = gerarRelatorio;
   
