@@ -10,10 +10,7 @@ let users = require('./users.json');
 const simulador = require('./transferencia.js');
 const { exibirTaxas } = require('./perfillojista.js');
 const relatorio = require('./relatorio');
-
-// resto do código
-
-
+const { buscarDadosChave, realizarTransferencia } = require('./pix.js');
 
 
 app.use(bodyParser.json());
@@ -181,5 +178,26 @@ app.post('/transferencia', function(req, res) {
     const relatorioGerado = relatorio.gerarRelatorio();
     res.send(relatorioGerado);
   });
+
+  app.post('/pix', (req, res) => {
+    const { valor, saldo } = req.body;
+    const transferenciaRealizada = realizarTransferencia(valor, saldo);
+    if (transferenciaRealizada) {
+      res.status(200).send('Transferência realizada com sucesso.');
+    } else {
+      res.status(400).send('Não foi possível realizar a transferência.');
+    }
+  });
+  
+  app.get('/chaves/:valorChave', (req, res) => {
+    const valorChave = req.params.valorChave;
+    const dados = buscarDadosChave(valorChave);
+    if (dados) {
+      res.status(200).json(dados);
+    } else {
+      res.status(404).send('Chave não encontrada');
+    }
+  });
+  
   
 
