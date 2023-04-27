@@ -1,14 +1,7 @@
 import { IonButton, IonCol, IonContent, IonLabel, IonPage, IonRow} from "@ionic/react";
 import { useHistory, useLocation } from "react-router-dom";
 
-const CadSucess: React.FC = () => {
-    const history=useHistory();
-    const location = useLocation();
-    const nome = new URLSearchParams(location.search).get("nome");
-    const sobrenome = new URLSearchParams(location.search).get("sobrenome");
-    
-    
-    return (
+ return (
       <IonPage>
         <IonContent className="ion-padding">
           <div className="sucess">
