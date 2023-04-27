@@ -41,6 +41,7 @@ import PixSucess from "./pages/pixPages/PixSucess";
 import RecargaSucess from "./pages/recargaPages/RecargaSucess";
 import BoletoSucess from "./pages/boletoPages/BoletoSucess";
 import TransfSucess from "./pages/transfPages/TransfSucess";
+import PerfilLogista from "./pages/cadastroPages/PerfilLogista";
 
 setupIonicReact();
 
@@ -69,6 +70,7 @@ const App: React.FC = () => {
           <Route path="/RecargaSucess" component={RecargaSucess}/>
           <Route path="/BoletoSucess" component={BoletoSucess}/>
           <Route path="/TransfSucess" component={TransfSucess}/>
+          <Route path="/PerfilLogista" component={PerfilLogista}/>
 
           <Redirect exact from="/" to="/Home" />
         </IonRouterOutlet>
