@@ -12,33 +12,35 @@ import {
   IonSelect, 
   IonSelectOption } from "@ionic/react";
 
-import { useRef, useState } from "react";
+import {useState, useRef} from "react";
 
 import ReturnToolbar from "../../components/returnToolbar";
+import { useHistory } from "react-router";
+
 
 const TransfPix: React.FC = () => {
+  const history = useHistory();
+
   const [tipoChave, setTipoChave] = useState<string>();
   const [error, setError] = useState<string>();
 
-  const valorRef = useRef <HTMLIonInputElement>(null);
-  const chaveRef = useRef <HTMLIonInputElement>(null);
+  const valorRef = useRef<HTMLIonInputElement>(null);
+  const chaveRef = useRef<HTMLIonInputElement>(null);
 
-  const enviarPix = () => {
+  const handleSubmit = () => {
+    let valor = valorRef.current!.value;
+    let chave = chaveRef.current!.value;
 
-  let valor = valorRef.current!.value;
-  let chave = chaveRef.current!.value;
-
-  if (!tipoChave || !valor || !chave){
+      if (!tipoChave || !valor || !chave){
     setError("Preencher corretamente antes de continuar");
     return;
   } else if (+valor < 0.01) {
     setError("Não é possível transferir esse valor");
     return;
-  }   
-};
-    
-const inputChangeHandler = (event: CustomEvent) => {
-  setTipoChave(event.detail.value);
+  }
+  console.log( valor, chave, tipoChave);
+  
+  history.push(`./PixSucess?valor=${valor}&chave=${chave}`);
 };
 
   return (
@@ -55,14 +57,14 @@ const inputChangeHandler = (event: CustomEvent) => {
           },
         ]}
       />
-      <ReturnToolbar title={"Transferência"} route={"./AreaPix"}/>
+      <ReturnToolbar title={"Transferência"} />
       <IonContent>
         <IonGrid>
           <IonRow>
             <IonCol>
               <IonItem>
                 <IonSelect
-                  onIonChange={inputChangeHandler}
+                  onIonChange={(event:CustomEvent) => {setTipoChave(event.detail.value)}}
                   aria-label="chave"
                   interface="popover"
                   placeholder="Selecione o Tipo de Chave"
@@ -101,8 +103,8 @@ const inputChangeHandler = (event: CustomEvent) => {
             </IonCol>
           </IonRow>
           <IonRow>
-            <IonCol>
-              <IonButton className="btn" fill="clear" onClick={enviarPix}>
+            <IonCol className="ioncol">
+              <IonButton className="btn" fill="clear" onClick={handleSubmit}>
                 Continuar
               </IonButton>
             </IonCol>
