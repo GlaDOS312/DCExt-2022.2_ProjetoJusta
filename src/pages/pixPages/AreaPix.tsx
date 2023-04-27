@@ -19,7 +19,7 @@ import ReturnToolbar from "../../components/returnToolbar";
 const AreaPix: React.FC = () => {
   return (
     <IonPage>
-      <ReturnToolbar title={"Área Pix"} route={"/TelaPrincipal"}/>
+      <ReturnToolbar title={"Área Pix"}/>
       <IonContent>
         <IonList>
           <Action
