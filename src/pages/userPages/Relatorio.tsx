@@ -13,30 +13,15 @@ const Relatorio: React.FC = () => {
 
   return (
     <IonPage>
-      <ReturnToolbar title={"Relatória de Vendas"} />
+      <ReturnToolbar title={"Relatório de Vendas"} />
       <IonContent>
         <div>
           <IonItem>
-            <label>FILTRO: </label>
-            <IonSelect
-              onIonChange={(event: CustomEvent) =>
-                setFiltro(event.detail.value)
-              }
-              interface="popover"
-              placeholder="Todos"
-            >
-              <IonSelectOption value="5">Últimos 5 dias</IonSelectOption>
-              <IonSelectOption value="10">Últimos 10 dias</IonSelectOption>
-              <IonSelectOption value="15">Últimos 15 dias</IonSelectOption>
-              <IonSelectOption value="30">Últimos 30 dias</IonSelectOption>
-            </IonSelect>
-          </IonItem>
-        </div>
-        <div>
           <RelSegment
             selected={opc}
             onSelect={(selected: "credito" | "debito") => setOpc(selected)}
           />
+          </IonItem>
         </div>
         <IonGrid className="my-table">
           {opc === "credito" ? creditTable : debitTable}
