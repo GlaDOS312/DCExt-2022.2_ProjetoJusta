@@ -170,6 +170,41 @@ ion-modal {
   padding: 8px 24px;
   border-radius: 50px;
   background-image: linear-gradient(180deg,#ffffff,#bdbdd0);            
-}             
-  
-  
+}      
+
+.card {
+  padding: 3%;
+  text-align: center;
+  display:list-item;
+  justify-content: center;
+}
+
+.ioncol{
+  display: flex;
+  justify-content: center;
+}
+
+.sucess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;   
+  color: aliceblue;
+}
+
+.my-table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color:rgb(255, 255, 255)
+}
+
+.my-table ion-col {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0.5rem;
+}
+
+.segment {
+  width: 100%;
+  background-color: rgb(163, 169, 171);
+}
