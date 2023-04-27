@@ -7,13 +7,14 @@ import {
   IonItem, 
   IonLabel, 
   IonInput, 
-  IonTitle, 
   IonButton, 
   IonAlert } from "@ionic/react";
 import ReturnToolbar from "../../components/returnToolbar";
 import { useRef, useState } from "react";
+import { useHistory } from "react-router";
 
 const CartaoBoleto: React.FC = () => {
+  const history = useHistory();
   const [error, setError] = useState<string>();
 
   const numboletoRef = useRef<HTMLIonInputElement>(null);
@@ -35,7 +36,9 @@ const CartaoBoleto: React.FC = () => {
       } else if (+valBoleto < 0.01) {
         setError("Valor do Boleto Incorreto");
         return;
-      }   
+      }
+      console.log(valBoleto, numBoleto, numCard, validadeCard, codiCard);
+      history.push(`./BoletoSucess?valor=${valBoleto}&numCard=${numCard}&numBoleto=${numBoleto}`)
       
     }
   return (
@@ -52,7 +55,7 @@ const CartaoBoleto: React.FC = () => {
           },
         ]}
       />
-      <ReturnToolbar title={"Pagar com cartão de Crédito"} />
+      <ReturnToolbar title={"Pagar com cartão"} />
       <IonContent>
         <IonGrid>
           <IonRow>
@@ -71,10 +74,12 @@ const CartaoBoleto: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
-          <IonTitle className="white">Cartão de Crédito:</IonTitle>
+          <IonRow>
+            <IonLabel className="white">Cartão de Crédito:</IonLabel>
+          </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
+            <IonItem>
                 <IonLabel position="floating">Número do Cartão</IonLabel>
                 <IonInput type="number" ref={numcardRef}></IonInput>
               </IonItem>
@@ -89,7 +94,7 @@ const CartaoBoleto: React.FC = () => {
             </IonCol>
           </IonRow>
           <IonRow>
-            <IonCol>
+            <IonCol className="ioncol">
               <IonButton className="btn" fill="clear" onClick={pagarBoleto}>
                 Continuar
               </IonButton>
