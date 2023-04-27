@@ -7,7 +7,6 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { useHistory } from "react-router";
-import { RouteComponentProps } from "react-router";
 import ReturnToolbar from "../components/returnToolbar";
 import justalogo from './justalogo.jpeg';
 
