@@ -86,17 +86,17 @@ app.route('/api').get((req, res) => res.json({
   
     const updatedUser = {
      
-      nome: req.body.nomeCad,
-      cnpj: req.body.cnpjCad,
-      sobrenome: req.body.sobrenomeCad,
-      email: req.body.emailCad,
-      senha: req.body.senhaCad,
-      saldo: req.body.saldoCad,
-      conta: req.body.contaCad,
-      agencia: req.body.agenciaCad,
-      tipo: req.body.tipoCad,
-      numero: req.body.numeroCad,
-      operadora: req.body.operadoraCad
+      nome: req.body.nome,
+      cnpj: req.body.cnpj,
+      sobrenome: req.body.sobrenome,
+      email: req.body.email,
+      senha: req.body.senha,
+      saldo: req.body.saldo,
+      conta: req.body.conta,
+      agencia: req.body.agencia,
+      tipo: req.body.tipo,
+      numero: req.body.numero,
+      operadora: req.body.operadora
     }
   
     userLogado = updatedUser;
