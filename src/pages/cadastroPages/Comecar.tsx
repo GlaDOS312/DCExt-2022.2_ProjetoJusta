@@ -1,121 +1,139 @@
-import { IonRouterOutlet, IonCol, IonInput, IonItem, IonButton, IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { IonDatetime } from '@ionic/react';
-import React from 'react';
+import {
+  IonContent,
+  IonPage,
+  IonCol,
+  IonItem,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonBackButton,
+  IonTitle,
+  IonButton,
+  IonLabel,
+  IonInput,
+  IonAlert,
+} from "@ionic/react";
+import React, { useRef, useState} from "react";
+import { useHistory } from "react-router";
 
-import { Redirect, Route } from 'react-router-dom';
-import { IonReactRouter } from '@ionic/react-router';
-import TelaPrincipal from './TelaPrincipal';
-import { useHistory } from 'react-router';
-import { RouteComponentProps} from 'react-router';
-import '../theme/Estilo.css';
-
-
-const Comecar: React.FC<RouteComponentProps> = () => {
+const Comecar: React.FC = () => {
   const history = useHistory();
-  
-  const nomeRef = useRef<HTMLIonInputElement>(null);
-  
+
+  const [error, setError] = useState<string>();
+
+  const nomeRef= useRef<HTMLIonInputElement>(null) 
+  const sobrenomeRef = useRef<HTMLIonInputElement>(null); 
+
+  const emailRef = useRef<HTMLIonInputElement>(null); 
+  const cnpjRef = useRef<HTMLIonInputElement>(null) 
+
+  const agenciaRef = useRef<HTMLIonInputElement>(null); 
+  const contaRef = useRef<HTMLIonInputElement>(null); 
+  const saldoRef = useRef<HTMLIonInputElement>(null);
+
+  const senhaRef= useRef<HTMLIonInputElement>(null) 
+
   const abrirConta = () => {
-    nome = nomeRef.current!.value
-    if (!nome) {
-      alert("Preencher Corretamente Antes de Continuar");
+    const nome = nomeRef.current!.value
+    const sobrenome = sobrenomeRef.current!.value
+    const email = emailRef.current!.value
+    const cnpj = cnpjRef.current!.value
+    const agencia = agenciaRef.current!.value
+    const conta = contaRef.current!.value
+    const saldo = saldoRef.current!.value
+    const senha = senhaRef.current!.value
+    if (!nome || !sobrenome || !saldo){
+      setError("Preencher Corretamente Antes de Continuar");
       return;
     }
-    history.push('/telaprincipal')
-  }
-  
+    console.log(nome, sobrenome);
+    history.push(`./cadSucess?nome=${nome}&sobrenome=${sobrenome}`);
+  };
+
   return (
-    <div >
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-          <IonBackButton defaultHref="/login" />
+            <IonBackButton defaultHref="/login" />
           </IonButtons>
-          <IonTitle>Cadastrar dados</IonTitle>
+          <IonTitle className="title">Cadastrar dados</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
-        <div className="estilo">
-        
         <IonCol>
-          <IonItem className ="login">
-            <IonInput label="Nome completo"  labelPlacement="stacked" placeholder="Digite seu nome completo" ref={nomeRef}></IonInput>
+          <IonItem className="login">
+            <IonLabel position="floating">Nome</IonLabel>
+            <IonInput type="text" ref={nomeRef} />
           </IonItem>
         </IonCol>
-      
-
-        <IonDatetime  size="cover" presentation="date" preferWheel={true}></IonDatetime>
-
-
         <IonCol>
-          <IonItem>
-            <IonInput label="E-mail"  labelPlacement="stacked" placeholder="Digite o seu e-mail"></IonInput>
+          <IonItem className="login">
+            <IonLabel position="floating">Sobrenome</IonLabel>
+            <IonInput type="text" ref={sobrenomeRef} />
           </IonItem>
         </IonCol>
 
         <IonCol>
           <IonItem>
-            <IonInput label="Telefone"  type="password" labelPlacement="stacked" placeholder="888-888-8888"></IonInput>
-          </IonItem>
-        </IonCol>
-
-
-        <IonCol>
-          <IonItem>
-            <IonInput label="CNPJ"  labelPlacement="stacked" type="number" placeholder="000"></IonInput>
-          </IonItem>
-        </IonCol>
-
-
-        <IonCol>
-          <IonItem>
-            <IonInput  labelPlacement="stacked" label="Rua" placeholder="Digite o nome de sua rua"></IonInput>
-          </IonItem>
-        </IonCol>
-
-      
-        <IonCol>
-          <IonItem>
-            <IonInput  labelPlacement="stacked" label="Bairro" placeholder="Digite o nome de seu bairro"></IonInput>
+            <IonLabel position="floating">Email</IonLabel>
+            <IonInput type="text" ref={emailRef} />
           </IonItem>
         </IonCol>
 
         <IonCol>
           <IonItem>
-            <IonInput  labelPlacement="stacked" label="Cidade" placeholder="Digite o nome de sua cidade"></IonInput>
-          </IonItem>
-        </IonCol>
-
-
-        <IonCol>
-          <IonItem>
-            <IonInput  labelPlacement="stacked" label="Estado" placeholder="Digite o nome de seu Estado"></IonInput>
+            <IonLabel position="floating">Agencia</IonLabel>
+            <IonInput type="text" ref={agenciaRef} />
           </IonItem>
         </IonCol>
 
         <IonCol>
           <IonItem>
-            <IonInput  labelPlacement="stacked" label="CEP" type="number" placeholder="000"></IonInput>
+            <IonLabel position="floating">CNPJ</IonLabel>
+            <IonInput type="text" ref={cnpjRef} />
           </IonItem>
         </IonCol>
-       
 
         <IonCol>
           <IonItem>
-            <IonInput label="Senha" type="password" labelPlacement="stacked" placeholder="Digite a sua senha"></IonInput>
+            <IonLabel position="floating">Conta</IonLabel>
+            <IonInput type="text" ref={contaRef} />
+          </IonItem>
+        </IonCol>
+        <IonCol>
+          <IonItem>
+            <IonLabel position="floating">Saldo</IonLabel>
+            <IonInput type="text" ref={saldoRef} />
           </IonItem>
         </IonCol>
 
-
-        <IonButton  shape="round" className="botao" onClick={abrirConta}>Enviar</IonButton>
-
-        </div>
+        <IonCol>
+          <IonItem>
+            <IonLabel position="floating">Senha</IonLabel>
+            <IonInput type="text" ref={senhaRef} />
+          </IonItem>
+        </IonCol>
+        <IonCol className="ioncol">
+          <IonButton className="btn" fill="clear" onClick={abrirConta}>
+            Abrir Conta
+          </IonButton>
+        </IonCol>
+        <IonAlert
+          isOpen={!!error}
+          message={error}
+          buttons={[
+            {
+              text: "OK",
+              handler: () => {
+                setError(undefined);
+              },
+            },
+          ]}
+        />
       </IonContent>
     </IonPage>
-    </div>
   );
 };
 export default Comecar;
-
