@@ -14,44 +14,54 @@ import justalogo from './justalogo.jpeg';
 
 const Login: React.FC<RouteComponentProps> = () => {
   const history = useHistory();
+  const [error,setError] = useState<string>();
+  
+  const loginRef = useRef<HTMLIonInputElement>(null);
+  const senhaRef= useRef<HTMLIonInputElement>(null);
+  
+  const entrar = () => {
+    let login = loginRef.current!.value
+    let senha = senhaRef.current!.value
+    NewUser = {
+      login:{login},
+      senha:{senha},
+    }
+  }
+  
   return (
     <div className="estilo">
       <IonPage>
-        <ReturnToolbar title={"Login"}/>
+         <ReturnToolbar title={"Login"}/>
 
-        <IonContent>  
-        <div className="container">
-        <img className ="img" src = {justalogo} alt="Logo Justa"/>
+        <IonContent>
+          <div className="container">
+            <IonItem>
+              <IonInput
+                label="E-mail"
+                type="email"
+                placeholder="Digite o seu e-mail"
+                ref={loginRef}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonInput
+                label="Digite a sua senha"
+                type="password"
+                ref={senhaRef}
+              ></IonInput>
+            </IonItem>
 
-          
-        <IonCol>
-          <IonItem>
-            <IonInput label="E-mail" labelPlacement="stacked" placeholder="Digite o seu e-mail"></IonInput>
-          </IonItem>
-        </IonCol>
-      
-
-        <IonCol>
-          <IonItem>
-            <IonInput label="Senha" type="password" labelPlacement="stacked" placeholder="Digite a sua senha"></IonInput>
-          </IonItem>
-        </IonCol>
-     
-
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <Route path="/telaprincipal" component={TelaPrincipal} />
-            <Redirect exact from="/" to="/login" />
-          </IonRouterOutlet>
-        </IonReactRouter>
-
-
-        <IonButton  shape="round" className="botaobranco" onClick={() => history.push('/telaprincipal')}>Entrar</IonButton>
-
-        </div>
-      </IonContent>
-    </IonPage>
-    
+            <IonButton
+              shape="round"
+              className="botaobranco"
+              onClick={entrar}
+            >
+              Entrar
+            </IonButton>
+          </div>
+        </IonContent>
+      </IonPage>
+    </div>
   );
 };
 export default Login;
