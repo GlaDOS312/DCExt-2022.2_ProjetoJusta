@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+    color: #0c46a9;
+  }
+  
+  p {
+    margin-top: 0;
+    align-items: left;
+    color: #0c46a9;
+  }
+
+  small {
+    font-size: 0.8em;
+  }
+  
+  select {
+    font-size: 1em;
+    padding: 0.5em;
+    margin: 0;
+    margin-top: -5em;
+  }
+  
+.button {
+    background-color: #0c46a9;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin-top: 0.5em;
+    cursor: pointer;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1em;
+    color: #0c46a9;
+  }
+  
+  th, td {
+    padding: 0.5em;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+  }
+  
+  th {
+    background-color: #0c46a9;
+    color: rgb(255, 255, 255);
+  }
+  
+  button {
+    background-color: #0c46a9;
+    color: #fff;
+    font-size: 0.75em;
+    border-radius: 50px;
+  }
+
+  option {
+    background-color: #377cf4;
+    color: #fff;
+    font-size: 0.75em;
+    border-radius: 25px;
+ }
+
+  #beneficios {
+    margin-top: 2em;
+  }
+  
+  h1 {
+    color: #0c46a9;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    margin-top: -0.1em;
+    margin-right: 42em;
+    background-color: #ffffff;
+    height: 25px;
+    
+  }
+  
+  #cashback, #isencao {
+    margin-top: 0;
+  }
+  
+  #resultado {
+    font-size: 1.2em;
+    margin-top: 1em;
+  }
+  
