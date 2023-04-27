@@ -1,9 +1,3 @@
-import { useState } from 'react'; 
-
-import Navbar from "./Components/navbar/Navbar";
-import Sidebar from "./Components/sidebar/Sidebar";
-import Main from "./Components/main/Main";
-
 import './App.css';
 
 const App = () => {
