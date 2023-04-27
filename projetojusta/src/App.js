@@ -1,21 +1,16 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Dashboard from '../react-axios/dashboard';
+import Cadastro from '../react-axios/cadastro';
 
-const App = () => {
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const openSidebar = () => {
-    setSidebarOpen(true);
-  };
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  };
-
+function App() {
   return (
-    <div className="container">
-      <Navbar sidebarOpen={sidebarOpen} closeSidebar={openSidebar} />
-      <Main />
-      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/dashboard" exact component={Dashboard} />
+        <Route path="/cadastro" component={Cadastro} />
+      </Switch>
+    </Router>
   );
 }
 
