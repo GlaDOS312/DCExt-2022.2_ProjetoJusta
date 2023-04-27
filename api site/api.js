@@ -116,6 +116,11 @@ app.route('/api').get((req, res) => res.json({
   fs.writeFile("users.json",JSON.stringify(users), err => {
     if (err) {throw err;} 
   })
+  app.get('/api/home', (req, res) => {
+    const home = users.map(user => ({ nome: user.nome, saldo: user.saldo }));
+    res.json(home);
+  });
+  
 
   app.post("/recarga", function(req, res) {
     const numero = req.body.numero;
