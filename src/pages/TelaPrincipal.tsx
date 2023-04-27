@@ -5,11 +5,13 @@ import {
   phonePortraitOutline,
   receiptOutline,
   cashOutline,
+  calendarOutline,
 } from "ionicons/icons";
 
 import ToolBar from "../components/ToolBar";
 import Action from "../components/Action";
 import SaldoVendas from "../components/SaldoVendas";
+
 
 const TelaPrincipal: React.FC = () => {
   return (
