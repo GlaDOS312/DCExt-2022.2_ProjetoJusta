@@ -19,15 +19,16 @@ import { OverlayEventDetail } from "@ionic/core/components";
 
 import ReturnToolbar from "../../components/returnToolbar";
 import TransfModal from "../../components/TransfModal";
+import { useHistory } from "react-router";
 
 const TransfBanc: React.FC = () => {
-
+  const history = useHistory();
   const [error, setError] = useState<string>();
-  
+
   const [present, dismiss] = useIonModal(TransfModal, {
     onDismiss: (data: string, role: string) => dismiss(data, role),
   });
-
+  
   const [banco, setBanco] = useState<string>();
   const [outro, setOutro] = useState(false);
 
@@ -37,7 +38,7 @@ const TransfBanc: React.FC = () => {
   const agenciaRef = useRef<HTMLIonInputElement>(null);
   const contaRef = useRef<HTMLIonInputElement>(null);
 
-  const conferirDados = () => {
+  const handleSubmit = () => {
     let nomeRec = nomeRef.current!.value;
     let cadastro = cpfcnpjRef.current!.value;
     let agencia = agenciaRef.current!.value;
@@ -52,6 +53,9 @@ const TransfBanc: React.FC = () => {
       return;
     }
     console.log(nomeRec, cadastro, banco, agencia, conta, valor);
+    history.push(
+      `./TransfSucess?valor=${valor}&nome=${nomeRec}&banco=${banco}&agencia=${agencia}`
+    );
   };
 
   const selectHandler = (event: CustomEvent) => {
@@ -154,8 +158,8 @@ const TransfBanc: React.FC = () => {
             </IonCol>
           </IonRow>
           <IonRow>
-            <IonCol>
-              <IonButton className="btn" fill="clear" onClick={conferirDados}>
+            <IonCol className="ioncol">
+              <IonButton className="btn" fill="clear" onClick={handleSubmit}>
                 Continuar
               </IonButton>
             </IonCol>
