@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Relatório de Vendas</title>
+    <script src="vendas.js" defer></script>
+    <style>
+      /* Estilos CSS para a tabela */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #ddd;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Relatório de Vendas</h1>
+    <form>
+      <label for="startDate">Data de início:</label>
+      <input type="date" id="startDate" name="startDate" required>
+      <label for="endDate">Data de término:</label>
+      <input type="date" id="endDate" name="endDate" required>
+      <label for="period">Período:</label>
+      <select id="period" name="period">
+        <option value="3">Últimos 3 dias</option>
+        <option value="5">Últimos 5 dias</option>
+        <option value="15">Últimos 15 dias</option>
+        <option value="30" selected>Últimos 30 dias</option>
+        <option value="custom">Personalizado</option>
+      </select>
+      <label for="creditCardFlag">Bandeira do cartão de crédito:</label>
+      <input type="text" id="creditCardFlag" name="creditCardFlag">
+      <label for="debitCardFlag">Bandeira do cartão de débito:</label>
+      <input type="text" id="debitCardFlag" name="debitCardFlag">
+      <button id="btnRelatorio">Gerar relatório</button>
+    </form>
+    <div id="relatorio"></div>
+    <table id="creditCardTable">
+      <thead>
+        <tr>
+          <th>Bandeira</th>
+          <th>Total de Vendas</th>
+          <th>Número de Transações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="creditCardFlagValue"></td>
+          <td id="creditCardTotalValue"></td>
+          <td id="creditCardTransactionsValue"></td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="debitCardTable">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Tipo</th>
+          <th>Número de Transações</th>
+          <th>Bandeira</th>
+        </tr>
+      </thead>
+      <tbody id="salesTableBody">
+      </tbody>
+        <tr>
+          <td id="debitCardFlagValue"></td>
+          <td id="debitCardTotalValue"></td>
+          <td id="debitCardTransactionsValue"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
