@@ -31,12 +31,16 @@ import UserConfig from "./pages/userPages/UserConfig";
 import Recarga from "./pages/recargaPages/Recarga";
 import Relatorio from "./pages/userPages/Relatorio";
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import AbrirConta from './pages/cadrastoPages/AbrirConta';
-import Comecar from '../pages/cadastroPages/Comecar';
+import AbrirConta from "./pages/cadastroPages/AbrirConta";
+import Comecar from "./pages/cadastroPages/Comecar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
-
+import CadSucess from "./pages/cadastroPages/CadSucess";
+import PixSucess from "./pages/pixPages/PixSucess";
+import RecargaSucess from "./pages/recargaPages/RecargaSucess";
+import BoletoSucess from "./pages/boletoPages/BoletoSucess";
+import TransfSucess from "./pages/transfPages/TransfSucess";
 
 setupIonicReact();
 
@@ -53,13 +57,20 @@ const App: React.FC = () => {
           <Route path="/CartaoBoleto" component={CartaoBoleto} />
           <Route path="/UserConfig" component={UserConfig} />
           <Route path="/Recarga" component={Recarga} />
-          <Route path="/Relatorio" component={Relatorio}/>
-          <Route path="/home" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/abrirconta" component={AbrirConta} />
-          <Route path="/comecar" component={Comecar} />
-          <Redirect exact from="/" to="/home" />
+          <Route path="/Relatorio" component={Relatorio} />
 
+          <Route path="/AbrirConta" component={AbrirConta} />
+          <Route path="/Comecar" component={Comecar} />
+          <Route path="/Home" component={Home} />
+          <Route path="/Login" component={Login} />
+
+          <Route path="/PixSucess" component={PixSucess} />
+          <Route path="/CadSucess" component={CadSucess} />
+          <Route path="/RecargaSucess" component={RecargaSucess}/>
+          <Route path="/BoletoSucess" component={BoletoSucess}/>
+          <Route path="/TransfSucess" component={TransfSucess}/>
+
+          <Redirect exact from="/" to="/Home" />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
